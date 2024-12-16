@@ -1,0 +1,264 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/table.css' %}">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    
+    <div class="navbarr">
+        <div class="logo">Customer Relationship Management</div>
+        <div class="nav-togglee" id="nav-togglee">
+            <i class="fas fa-bars"></i>
+        </div>
+        <!-- <div class="d-flex bg-white ">
+          <div class="py-2 px-3" >
+              <i style="color: black" class="fa-solid fa-magnifying-glass"></i>
+          </div>
+          <div class="">
+              <input type="text" placeholder="Search......." class="form-control">
+          </div>
+      </div> -->
+
+    </div>
+    <div class="sidebarr" id="sidebarr">
+        <div class="sidebarr-header">Dashboard</div>
+        <ul class="sidebarr-menu">
+            <li>
+                <a href="{% url 'home' %}"><i class="fas fa-home"></i> Google</a>
+                <li>
+                    <a href="{% url 'g_scraper' %}">Google Table</a>
+                </li>  
+             </li>
+             <li>
+                <!-- <div class="col-4-xxxl col-xl-4 col-lg-3 col-12 form-group"> --> 
+                            
+                    {% if has_scraped_data %}
+                    <!-- <div class="col-4-xxxl col-xl-4 col-lg-3 col-12 form-group"> -->
+                    <a href="{% url 'save_data' %}">
+                        Save
+                    </a>
+                <!-- </div> -->
+                {% else %}
+                <!-- <div class="col-4-xxxl col-xl-4 col-lg-3 col-12 form-group"> -->
+                    <a href="#"aria-disabled="true">
+                        Save
+                    </a>
+                <!-- </div> -->
+                {% endif %}
+
+                
+            <!-- </div>  -->
+             </li>
+            <li>
+                <a href="">View Data</a>
+            </li>
+            <li>
+              <a href="#"><i class="fas fa-user"></i> Linkedin</a>
+            </li>
+
+            <li><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+    </div>
+    <div class="main-content" id="main-content">
+        <div class="content">
+            <h1 style="margin-bottom: 50px;">Data Extracter</h1>
+            
+            <!-- <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">First</th>
+                  <th scope="col">Last</th>
+                  <th scope="col">Handle</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                  <td>@mdo</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                  <td>@fat</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td colspan="2">Larry the Bird</td>
+                  <td>@twitter</td>
+                </tr>
+              </tbody>
+            </table> -->
+            <div style="border: none;" class="card height-auto">
+              <div class="card-body px-0">
+                <form class="mg-b-20 mb-3" method="GET" action="{% url 'g_scraper' %}">
+                  <div style="justify-content: space-between;" class="row gutters-8">
+                      <div style="" class= "my-2 col-4-xxxl col-xl-6 col-lg-3 col-12 form-group">
+                         <input style="width: 100%; padding: 15px;" type="text" placeholder="Pest control services Dubai" name = "q" value = {{query}} >
+                      </div>
+                      <div style="" class="my-1 col-1-xxxl col-xl-6 col-lg-3 col-12 form-group">
+                          <button type ="submit"><h3>Start</h3></button>
+                      </div>
+                  </div>
+              </form>
+                  
+                      
+                      <!-- <div class="dropdown three-dot-drop">
+                          <a style="font-size: 25px !important;  text-decoration: none;" class="dropdown-toggle hide-arroww " href="#" role="button" data-bs-toggle="dropdown"
+                              aria-expanded="false"><i class="fa-solid fa-ellipsis"></i></a>
+                              
+
+                          <div class="dropdown-menu dropdown-menu-right ">
+                              <a class="dropdown-item " href="#"><i
+                                      class="fas fa-times text-orange-red"></i>Close</a>
+                              <a class="dropdown-item" href="#"><i
+                                      class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
+                              <a class="dropdown-item" href="#"><i
+                                      class="fas fa-redo-alt text-orange-peel"></i>Refresh</a>
+                          </div>
+                      </div> -->
+                      
+                      
+                      
+                  <!-- </div>-->
+                  <form class="mg-b-20 mb-3">
+                    <div class="row gutters-8">
+                        
+                        <div class="col-4-xxxl col-xl-4 col-lg-3 col-12 form-group"> 
+                            
+                             <!-- {% if has_scraped_data %} -->
+                            <div class="col-4-xxxl col-xl-4 col-lg-3 col-12 form-group">
+                            <a href="{% url 'download_data' %}" class="btn btn-primary">
+                                <h3>Download</h3>
+                            </a>
+                        </div>
+                        <!-- {% else %} -->
+                        <div class="col-4-xxxl col-xl-4 col-lg-3 col-12 form-group">
+                            <a href="#" class="btn btn-primary disabled" aria-disabled="true">
+                                <h3>Download</h3>
+                            </a>
+                        </div>
+                        <!-- {% endif %}  -->
+                        
+                    </div>
+                        <div class="col-4-xxxl col-xl-4 col-lg-3 col-12 form-group">
+                            <a href="#" class="btn btn-primary" >
+                            <h3>Reset</h3>
+                            </a>
+                        </div>
+                        <div class="col-1-xxxl col-xl-4 col-lg-3 col-12 form-group">
+                            <a href="#" class="btn btn-primary ">
+                            <h3>Exit</h3>
+                            </a>
+                        </div>
+                    </div>
+                </form>
+                  <!-- <form class="mg-b-20">
+                      <div class="row gutters-8">
+                          <div class="col-3-xxxl col-xl-3 col-lg-3 col-12 form-group">
+                              <input type="text" placeholder="Search by ID ..." class="form-control">
+                          </div>
+                          <div class="col-4-xxxl col-xl-4 col-lg-3 col-12 form-group">
+                              <input type="text" placeholder="Search by Name ..." class="form-control">
+                          </div>
+                          <div class="col-4-xxxl col-xl-3 col-lg-3 col-12 form-group">
+                              <input type="text" placeholder="Search by Phone ..." class="form-control">
+                          </div>
+                          <div class="col-1-xxxl col-xl-2 col-lg-3 col-12 form-group">
+                              <button style="padding: 4px 90px 4px; background: rgb(255, 160, 1); border-radius: 10px;" type="submit" class="fw-btn-fill btn-gradient-yellow">SEARCH</button>
+                          </div>
+                      </div>
+                  </form> -->
+                  
+                  {% if messages %}
+    <div>
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+                   {% if has_scraped_data %}
+                  <div class="table-responsive">
+                      <table style="background: rgb(238, 236, 236);" class="table display data-table text-nowrap">
+                          <thead>
+                              <tr>
+                                  <th><label class="form-check-label">ID</label></th>
+                                  <!-- <th>Photo</th> -->
+                                  <th>Name</th>
+                                  <th>Mobile</th>
+                                  <th>Website</th>
+                                  <th>Address</th>
+                                  <!-- <th>E-mail</th> -->
+                              </tr>
+                          </thead>
+                          <tbody>
+                            {% for item in scraped_data %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ item.name }}</td>
+                                <td>
+                                    {% for mobile in item.mobiles %}
+                                        {{ mobile }}<br>
+                                    {% empty %}
+                                        NA
+                                    {% endfor %}
+                                </td>
+                                <td>
+                                    {% for website in item.websites %}
+                                        <a href="{{ website }}" target="_blank">{{ website }}</a><br>
+                                    {% empty %}
+                                        NA
+                                    {% endfor %}
+                                </td>
+                                <td>
+                                    {% for address in item.addresses %}
+                                        {{ address }}<br>
+                                    {% empty %}
+                                        NA
+                                    {% endfor %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>                      </table> 
+                     
+                      {% if error %}
+                      <div style="color: red; margin-top: 20px;">
+                          <p>{{ error }}</p>
+                      </div>
+                  {% endif %}
+              
+                  
+                    </div>
+                    {% endif %}
+              </div>
+          </div>
+          </div>
+    </div>
+    
+    
+    <script src="{% static 'js/script.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,1049 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <title>LMS-ERP</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- <script src="{% static 'app/script.js' %}"></script> -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+		
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- bootstrap CSS link -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="{% static 'css/All.css' %}">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body style="overflow-x: hidden;" >
+		
+<main style="overflow: hidden;" class="wrapper d-flex align-items-stretch">
+    <nav style="position:relative; overflow-y: scroll;  " class="bg-white sidebar-width" id="sidebar">
+
+        <div style="border: 2px solid rgb(221, 221, 221) !important; background: #ffffff; padding: 10.8px;" class="d-flex CIPL">
+            <a style="padding: 10px 10px 4px 8px;" href="#"><img src="https://www.cdnlogo.com/logos/c/76/c.svg" height="40px" width="40px"></a>
+            <h1 style="font-family:'Franklin Gothic Medium'; padding-top: 8px;  color: #525252" class="m-0 text-center">CIPL</h1>
+        </div>
+        
+		<div style="width: auto;" class=" pt-1">
+        
+            <ul class="ul-list-edit list-unstyled components mb-5">
+                
+                <li class="active" >
+                <a  href="experiment.html"><i class="fa-solid fa-house"></i>Home</a>
+                </li>
+                <hr >
+                <li>
+                    <a href="Class-Routine.html"><i class="fa-solid fa-search"></i>Search</a>
+                </li>
+                <hr>
+                <li>
+                    <a href="Attendence.html"><i class="fa-solid fa-sheet-plastic"></i>Google Extractor</a>
+                </li>
+                <hr>
+                <li>
+                    <a href="Transport.html"><i class="fa-brands fa-linkedin"></i>Linkedin Extractor</a>
+                </li>
+                <hr>
+                <li>
+                    <a href="Account.html"><i class="fa-solid fa-gears"></i>Account</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!---------------- Page Content Area start here---------------------------------->
+    <div style="background-color: #d5dbe0;" id="content">
+        <div class="d-flex">
+            <button style="border-radius: 0px !important; border: none !important; background: white !important;" type="button" id="sidebarCollapse" class="btn sidebar-butun">
+                <i style="font-size: 25px;" class="fa-solid fa-bars"></i>
+                <span class="sr-only">Toggle Menu</span>
+            </button>
+
+            <!-- ===========================Navbar=========================================== -->
+            <nav style="width: 100%;" class="navbar navbar-expand-lg navbar-light bg-white border-design">
+                <div class="container">
+                    <div style="width: 40%;" class="input-group stylish-input-group">
+                        <span class="input-group-add">
+                            <button style="border: none; background: none;" type="submit">
+                                <span style="font-size: 25px; color: gray; margin-left: 20px; padding:15px 0px 12px 12px;" class="fa-solid fa-magnifying-glass" aria-hidden="true"></span>
+                            </button>
+                        </span>
+                        <input style="border: none; border-radius: 10px; margin: 8px; font-size: 16px;" type="text" class="form-control Form-Control" placeholder="Find Something . . .">
+                    </div>
+                </div>
+            </nav>
+            <!-----------------------------------------Navigation End Here --------------------------------------->
+        </div>
+
+        <!-----------------------------------Admin Dashboard main start ------------------------------------------------->
+        <div  class="dashboard-content-one">
+            <div class="row gutters-20 ">
+
+                <div style="height: max-content;" class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-12-xxxl">
+                    <hr style="margin: 0px; color: rgb(94, 93, 93);">
+                    <h4 style="background-color: white;" class="m-0 p-2">Search</h4>
+                    <ul style="background-color: white;" class="p-2 nav nav-pills mb-1" id="pills-tab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Peoples</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Companies</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Saved lists</button>
+                        </li>
+                    </ul>
+                
+                    <div class="mx-1 tab-content" id="pills-tabContent">
+<!-- ===================================Home-Tab====================================== -->
+                        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+                            <div class="col-response d-flex " style="display: flex;">
+                                <div class="abc col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 col-4-xxxl mx-auto my-1 p-2">
+                                    <div style="height: 100vh; overflow-y: scroll; scrollbar-width: 0px;" class="hide-scrollbar card dashboard-card-six pd-b-20">
+                                        <p class="p-3 m-0">Search</p>
+                                        <hr class="m-0">
+                                        <div class="px-2 d-flex">
+                                            <i style="font-size: 20px;" class="py-3 px-2 fa-solid fa-search"></i>
+                                            <input style="border: none;" class="p-2" type="text" placeholder="Search Companies...">
+                                        </div>
+                                        <hr class="m-0">
+                                        <div style="width: 100%; border: none;" class="filters-section">
+                                            <h5>Filters</h5>
+                                            <div class="accordion" id="filtersAccordion">
+                
+                                                <!-- Name Section -->
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header" id="headingLists">
+                                                        <button class="accordion-button filter-dropdown-header" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLists" aria-expanded="true" aria-controls="collapseLists">
+                                                            Name
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapseLists" class="accordion-collapse collapse show" aria-labelledby="headingLists" data-bs-parent="#filtersAccordion">
+                                                        <div class="accordion-body">
+                                                            <input type="text" class="form-control" placeholder="Search.." aria-label="Username" aria-describedby="basic-addon1">
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                
+                                                <!-- Job_Title Section -->
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header" id="headingCompany">
+                                                        <button class="accordion-button filter-dropdown-header collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCompany" aria-expanded="false" aria-controls="collapseCompany">
+                                                            Job Title
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapseCompany" class="accordion-collapse collapse" aria-labelledby="headingCompany" data-bs-parent="#filtersAccordion">
+                                                        <div class="accordion-body">
+                                                            <input type="text" class="form-control" placeholder="Search.." aria-label="Username" aria-describedby="basic-addon1">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                
+                                                <!-- Designation Section -->
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header" id="headingLocation">
+                                                        <button class="accordion-button filter-dropdown-header collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLocation" aria-expanded="false" aria-controls="collapseLocation">
+                                                            Designation
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapseLocation" class="accordion-collapse collapse" aria-labelledby="headingLocation" data-bs-parent="#filtersAccordion">
+                                                        <div class="accordion-body">
+                                                            <input type="text" class="form-control" placeholder="Search.." aria-label="Username" aria-describedby="basic-addon1">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                
+                                                <!-- Company Name Section -->
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header" id="headingEmployees">
+                                                        <button class="accordion-button filter-dropdown-header collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEmployees" aria-expanded="false" aria-controls="collapseEmployees">
+                                                            Company Name
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapseEmployees" class="accordion-collapse collapse" aria-labelledby="headingEmployees" data-bs-parent="#filtersAccordion">
+                                                        <div class="accordion-body">
+                                                            <input type="text" class="form-control" placeholder="Search.." aria-label="Username" aria-describedby="basic-addon1">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                
+                                            </div>
+                
+                                            <button type="button" class="btn btn-secondary save-search-btn mt-3" disabled>Save Search</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- =================Table-Section============== -->
+                                <div class="xyz col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 col-8-xxxl mx-auto my-1 p-2">
+                                    <div style="height: 100vh; overflow-y: scroll;" class="p-5 card dashboard-card-six pd-b-20">
+                                        <div class="T-278-edit">
+                                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                                <div>
+                                                    <h2 class="total-278" >Total (278.6M)</h2>
+                                                </div>
+                                                <div>
+                                                    <button type="button" class="btn btn-primary vp-edit">View Plans</button>
+                                                </div>
+                                            </div>
+                                            <!-- ============Tabs Header================ -->
+                                            <ul class="tab-sec-278 nav nav-tabs mb-3" id="myTab" role="tablist">
+                                                <li class="nav-item" role="presentation">
+                                                    <button class="nav-link active" id="total-tab" data-bs-toggle="tab" data-bs-target="#total" type="button" role="tab" aria-controls="total" aria-selected="true">Total (278.6M)</button>
+                                                </li>
+                                                <li class="nav-item" role="presentation">
+                                                    <button class="nav-link" id="netnew-tab" data-bs-toggle="tab" data-bs-target="#netnew" type="button" role="tab" aria-controls="netnew" aria-selected="false">Net New (278.6M)</button>
+                                                </li>
+                                                <li class="nav-item" role="presentation">
+                                                    <button class="nav-link" id="saved-tab" data-bs-toggle="tab" data-bs-target="#saved" type="button" role="tab" aria-controls="saved" aria-selected="false">Saved</button>
+                                                </li>
+                                            </ul>
+                                            <!-- Loading indicator -->
+                                            <!-- Loading Message -->
+<div id="loading-message" style="display: none;">
+    <p>Web Scraping is Running...</p>
+</div>
+
+<!-- Completed Message -->
+<div id="completed-message" style="display: none;">
+    <p>Web Scraping Completed!</p>
+</div>
+
+
+                                            <!-- ===============Tabs====================== -->
+                                            <div class="tab-content" id="myTabContent">
+                                                <!-- ============Tab-1============ -->
+                                                <div class="tab-pane fade show active" id="total" role="tabpanel" aria-labelledby="total-tab">
+                                                    <!-- Content for Total tab -->
+                                                    <div style="height: 1000px;" class="video-container mb-3">
+                                                        <!-- ================================== -->
+                                                        <!-- ===================================== -->
+                                                        <div class="DE-sec" id="">
+                                                            <div class="">
+                                                                <h1 style="margin-bottom: 50px;">Data Extracter</h1>    
+                                                                <div style="border: none;" class="card height-auto">
+                                                                    <div class="card-body px-0">
+                                                                        <form id = "scraper-form" class="mg-b-20 mb-3" method="post" action="{% url 'g_scraper' %}">
+                                                                            {% csrf_token %}
+                                                                            <div style="justify-content: space-between;" class="row gutters-8">
+                                                                                <div  class= "my-2 col-4-xxxl col-xl-6 col-lg-3 col-12 form-group">
+                                                                                    <input style="width: 100%; padding: 15px;" type="text" placeholder="Pest control services Dubai" id="query" name="query">
+                                                                                </div>
+                                                                                <div  class="my-1 col-1-xxxl col-xl-6 col-lg-3 col-12 form-group">
+                                                                                    <button type="submit">
+                                                                                    <h3>Start</h3>
+                                                                                </button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                    
+                                                                        <form class="mg-b-20 mb-3">
+                                                                            <div class="row gutters-8">
+                                                                                
+                                                                                <!-- <div class="col-4-xxxl col-xl-4 col-lg-3 col-12 form-group">
+                                                                                    <h3>Export</h3>
+                                                                                </div> -->
+                                                                                <!-- <div class="col-4-xxxl col-xl-4 col-lg-3 col-12 form-group">
+                                                                                    <a href="{% url 'save_scraped_data' %}"><h3>Save</h3></a>
+                                                                                </div> -->
+                                                                                <button id="save-data" class="btn btn-primary" type="button">Save</button>
+
+                                                                                <div class="col-1-xxxl col-xl-4 col-lg-3 col-12 form-group">
+                                                                                    <h3>Exit</h3>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                                        <div style="height: 650px; overflow-y: scroll;" class="table-responsive hidee-scrollbar">
+                                                                           
+                                                                            <table id="scraped-data-table" style="background: rgb(238, 236, 236);" class="table display data-table text-nowrap">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <!-- <th><label class="form-check-label">ID</label></th> -->
+                                                                                        <!-- <th>Photo</th> -->
+                                                                                        <th>Name</th>
+                                                                                        <!-- <th>Link</th> -->
+                                                                                        <th>Website</th>
+                                                                                        <th>Mobile</th>
+                                                                                        <th>Address</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td colspan="5"></td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                               
+                                                                                   
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- ============================================= -->
+                                                        <!-- <div class="filter-note">Add filters to begin your search</div> -->
+                                                    </div>
+                                                    <h4>Find the right leads</h4>
+                                                    <p>Start your search by applying filters to hone in on your ideal customer.</p>
+                                                    <div class="d-flex flex-wrap">
+                                                        <button type="button" class="btn btn-outline-secondary m-1">United States</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">United Kingdom</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">VP Sales</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">Founder</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">Director</button>
+                                                    </div>
+                                                </div>
+                                                <!-- ============Tab-2============ -->
+                                                <div class="tab-pane fade" id="netnew" role="tabpanel" aria-labelledby="netnew-tab">
+                                                    <!-- Content for Net New tab -->
+                                                    <div style="height: 1000px;" class="video-container mb-3">
+                                                        <!-- ================================== -->
+                                                        <!-- ===================================== -->
+                                                        <div class="DE-sec" id="">
+                                                            <div class="">
+                                                                <h1 style="margin-bottom: 50px;">Data Extracter</h1>    
+                                                                <div style="border: none;" class="card height-auto">
+                                                                    <div class="card-body px-0">
+                                                                        <form class="mg-b-20 mb-3" method="GET" action="{% url 'g_scraper' %}>
+                                                                            <div style="justify-content: space-between;" class="row gutters-8">
+                                                                                <div  class= "my-2 col-4-xxxl col-xl-6 col-lg-3 col-12 form-group">
+                                                                                    <input style="width: 100%; padding: 15px;" type="text" placeholder="Pest control services Dubai" name="q" value={{query}}>
+                                                                                </div>
+                                                                                <div  class="my-1 col-1-xxxl col-xl-6 col-lg-3 col-12 form-group">
+                                                                                    <button type="submit">
+                                                                                    <h3>Start</h3>
+                                                                                </button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                    
+                                                                        <form class="mg-b-20 mb-3">
+                                                                            <div class="row gutters-8">
+                                                                                
+                                                                                <div class="col-4-xxxl col-xl-4 col-lg-3 col-12 form-group">
+                                                                                    <h3>Export</h3>
+                                                                                </div>
+                                                                                <div class="col-4-xxxl col-xl-4 col-lg-3 col-12 form-group">
+                                                                                    <h3>Reset</h3>
+                                                                                </div>
+                                                                                <div class="col-1-xxxl col-xl-4 col-lg-3 col-12 form-group">
+                                                                                    <h3>Exit</h3>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                                        <div style="height: 650px; overflow-y: scroll;" class="table-responsive hidee-scrollbar">
+                                                                            <table id="scraped-data-table" style="background: rgb(238, 236, 236);" class="table display data-table text-nowrap">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th><label class="form-check-label">ID</label></th>
+                                                                                        <!-- <th>Photo</th> -->
+                                                                                        <th>Name</th>
+                                                                                        <th>Website</th>
+                                                                                        <th>Mobile</th>
+                                                                                        <th>Address</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <td colspan="5"></td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- ============================================= -->
+                                                        <!-- <div class="filter-note">Add filters to begin your search</div> -->
+                                                    </div>
+                                                    <h4>Find the right leads</h4>
+                                                    <p>Start your search by applying filters to hone in on your ideal customer.</p>
+                                                    <div class="d-flex flex-wrap">
+                                                        <button type="button" class="btn btn-outline-secondary m-1">United States</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">United Kingdom</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">VP Sales</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">Founder</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">Director</button>
+                                                    </div>
+                                                </div>
+                                                <!-- ============Tab-3============ -->
+                                                <div class="tab-pane fade" id="saved" role="tabpanel" aria-labelledby="saved-tab">
+                                                    <!-- Content for Saved tab -->
+                                                    <div style="height: 1000px;" class="video-container mb-3">
+                                                        <!-- ================================== -->
+                                                        <!-- ===================================== -->
+                                                        <div class="DE-sec" id="">
+                                                            <div class="">
+                                                                <h1 style="margin-bottom: 50px;">Data Extracter in save</h1>    
+                                                                <div style="border: none;" class="card height-auto">
+                                                                    <div class="card-body px-0">
+                                                                        <form id="scraper-form" class="mg-b-20 mb-3" method="post">
+                                                                            <div style="justify-content: space-between;" class="row gutters-8">
+                                                                                <div  class= "my-2 col-4-xxxl col-xl-6 col-lg-3 col-12 form-group">
+                                                                                    <input style="width: 100%; padding: 15px;" type="text" placeholder="Pest control services Dubai" >
+                                                                                </div>
+                                                                                <div  class="my-1 col-1-xxxl col-xl-6 col-lg-3 col-12 form-group">
+                                                                                    <h3>Start</h3>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                    
+                                                                        <form class="mg-b-20 mb-3">
+                                                                            <div class="row gutters-8">
+                                                                                
+                                                                                <div class="col-4-xxxl col-xl-4 col-lg-3 col-12 form-group">
+                                                                                    <h3>Export</h3>
+                                                                                </div>
+                                                                                <div class="col-4-xxxl col-xl-4 col-lg-3 col-12 form-group">
+                                                                                    <h3>Reset</h3>
+                                                                                </div>
+                                                                                <div class="col-1-xxxl col-xl-4 col-lg-3 col-12 form-group">
+                                                                                    <h3>Exit</h3>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                                        <div style="height: 650px; overflow-y: scroll;" class="table-responsive hidee-scrollbar">
+                                                                            <table id="saved-data-table" style="background: rgb(238, 236, 236);" class="table display data-table text-nowrap">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <!-- <th><label class="form-check-label">ID</label></th> -->
+                                                                                        <!-- <th>Photo</th> -->
+                                                                                        <th>Name Save</th>
+                                                                                        <!-- <th>Link</th> -->
+                                                                                        <th>Website</th>
+                                                                                        <th>Mobile</th>
+                                                                                        <th>Address</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                   <tr>
+                                                                                    <td colspan="4"></td>
+                                                                                   </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- ============================================= -->
+                                                        <!-- <div class="filter-note">Add filters to begin your search</div> -->
+                                                    </div>
+                                                    <h4>Find the right leads</h4>
+                                                    <p>Start your search by applying filters to hone in on your ideal customer.</p>
+                                                    <div class="d-flex flex-wrap">
+                                                        <button type="button" class="btn btn-outline-secondary m-1">United States</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">United Kingdom</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">VP Sales</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">Founder</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">Director</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- =================Tabs-End================ -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+<!-- ==================================Profile-Tab===================================== -->
+                        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
+                            <div class="col-response d-flex " style="display: flex;">
+                                <div class="abc col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 col-4-xxxl mx-auto my-1 p-2">
+                                    <div style="height: 600px; overflow-y: scroll; scrollbar-width: 0px;" class="hide-scrollbar card dashboard-card-six pd-b-20">
+                                        <p class="p-3 m-0">Search</p>
+                                        <hr class="m-0">
+                                        <div class="px-2 d-flex">
+                                            <i style="font-size: 20px;" class="py-3 px-2 fa-solid fa-search"></i>
+                                            <input style="border: none;" class="p-2" type="text" placeholder="Search Companies...">
+                                        </div>
+                                        <hr class="m-0">
+                                        <div style="width: 100%; border: none;" class="filters-section">
+                                            <h5>Filters</h5>
+                                            <div class="accordion" id="filtersAccordion">
+                
+                                                <!-- Lists Section -->
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header" id="headingLists">
+                                                        <button class="accordion-button filter-dropdown-header" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLists" aria-expanded="true" aria-controls="collapseLists">
+                                                            Name
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapseLists" class="accordion-collapse collapse show" aria-labelledby="headingLists" data-bs-parent="#filtersAccordion">
+                                                        <div class="accordion-body">
+                                                            <input type="text" class="form-control" placeholder="Search.." aria-label="Username" aria-describedby="basic-addon1">
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                
+                                                <!-- Company Section -->
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header" id="headingCompany">
+                                                        <button class="accordion-button filter-dropdown-header collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCompany" aria-expanded="false" aria-controls="collapseCompany">
+                                                            Job Title
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapseCompany" class="accordion-collapse collapse" aria-labelledby="headingCompany" data-bs-parent="#filtersAccordion">
+                                                        <div class="accordion-body">
+                                                            <input type="text" class="form-control" placeholder="Search.." aria-label="Username" aria-describedby="basic-addon1">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                
+                                                <!-- Account Location Section -->
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header" id="headingLocation">
+                                                        <button class="accordion-button filter-dropdown-header collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLocation" aria-expanded="false" aria-controls="collapseLocation">
+                                                            Designation
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapseLocation" class="accordion-collapse collapse" aria-labelledby="headingLocation" data-bs-parent="#filtersAccordion">
+                                                        <div class="accordion-body">
+                                                            <input type="text" class="form-control" placeholder="Search.." aria-label="Username" aria-describedby="basic-addon1">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                
+                                                <!-- Number of Employees Section -->
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header" id="headingEmployees">
+                                                        <button class="accordion-button filter-dropdown-header collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEmployees" aria-expanded="false" aria-controls="collapseEmployees">
+                                                            Company Name
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapseEmployees" class="accordion-collapse collapse" aria-labelledby="headingEmployees" data-bs-parent="#filtersAccordion">
+                                                        <div class="accordion-body">
+                                                            <input type="text" class="form-control" placeholder="Search.." aria-label="Username" aria-describedby="basic-addon1">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                
+                                            </div>
+                
+                                            <button type="button" class="btn btn-secondary save-search-btn mt-3" disabled>Save Search</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="xyz col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 col-8-xxxl mx-auto my-1 p-2">
+                                    <div style="height: 600px; overflow-y: scroll;" class="p-5 card dashboard-card-six pd-b-20">
+                                        <div class="container">
+                                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                                <div>
+                                                    <h2>Total (278.6M)</h2>
+                                                </div>
+                                                <div>
+                                                    <button type="button" class="btn btn-primary">View Plans</button>
+                                                </div>
+                                            </div>
+                
+                                            <ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
+                                                <li class="nav-item" role="presentation">
+                                                    <button class="nav-link active" id="total-tab" data-bs-toggle="tab" data-bs-target="#total" type="button" role="tab" aria-controls="total" aria-selected="true">Total (278.6M)</button>
+                                                </li>
+                                                <li class="nav-item" role="presentation">
+                                                    <button class="nav-link" id="netnew-tab" data-bs-toggle="tab" data-bs-target="#netnew" type="button" role="tab" aria-controls="netnew" aria-selected="false">Net New (278.6M)</button>
+                                                </li>
+                                                <li class="nav-item" role="presentation">
+                                                    <button class="nav-link" id="saved-tab" data-bs-toggle="tab" data-bs-target="#saved" type="button" role="tab" aria-controls="saved" aria-selected="false">Saved</button>
+                                                </li>
+                                            </ul>
+                
+                                            <div class="tab-content" id="myTabContent">
+                                                <div class="tab-pane fade show active" id="total" role="tabpanel" aria-labelledby="total-tab">
+                                                    <!-- Content for Total tab -->
+                                                    <div class="video-container mb-3">
+                                                        <iframe src="https://www.youtube.com/embed/your-video-id" frameborder="0" allowfullscreen></iframe>
+                                                        <div class="filter-note">Add filters to begin your search</div>
+                                                    </div>
+                                                    <h4>Find the right leads</h4>
+                                                    <p>Start your search by applying filters to hone in on your ideal customer.</p>
+                                                    <div class="d-flex flex-wrap">
+                                                        <button type="button" class="btn btn-outline-secondary m-1">United States</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">United Kingdom</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">VP Sales</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">Founder</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">Director</button>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane fade" id="netnew" role="tabpanel" aria-labelledby="netnew-tab">
+                                                    <!-- Content for Net New tab -->
+                                                    <div class="video-container mb-3">
+                                                        <iframe src="https://www.youtube.com/embed/your-video-id" frameborder="0" allowfullscreen></iframe>
+                                                        <div class="filter-note">Add filters to begin your search</div>
+                                                    </div>
+                                                    <h4>Find the right leads</h4>
+                                                    <p>Start your search by applying filters to hone in on your ideal customer.</p>
+                                                    <div class="d-flex flex-wrap">
+                                                        <button type="button" class="btn btn-outline-secondary m-1">United States</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">United Kingdom</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">VP Sales</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">Founder</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">Director</button>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane fade" id="saved" role="tabpanel" aria-labelledby="saved-tab">
+                                                    <!-- Content for Saved tab -->
+                                                    <div class="video-container mb-3">
+                                                        <iframe src="https://www.youtube.com/embed/your-video-id" frameborder="0" allowfullscreen></iframe>
+                                                        <div class="filter-note">Add filters to begin your search</div>
+                                                    </div>
+                                                    <h4>Find the right leads</h4>
+                                                    <p>Start your search by applying filters to hone in on your ideal customer.</p>
+                                                    <div class="d-flex flex-wrap">
+                                                        <button type="button" class="btn btn-outline-secondary m-1">United States</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">United Kingdom</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">VP Sales</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">Founder</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">Director</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+<!-- ================================Contact-Tab======================================== -->
+                        <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabindex="0">
+                            <div class="col-response d-flex " style="display: flex;">
+                                <div class="abc col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 col-4-xxxl mx-auto my-1 p-2">
+                                    <div style="height: 600px; overflow-y: scroll; scrollbar-width: 0px;" class="hide-scrollbar card dashboard-card-six pd-b-20">
+                                        <p class="p-3 m-0">Search</p>
+                                        <hr class="m-0">
+                                        <div class="px-2 d-flex">
+                                            <i style="font-size: 20px;" class="py-3 px-2 fa-solid fa-search"></i>
+                                            <input style="border: none;" class="p-2" type="text" placeholder="Search Companies...">
+                                        </div>
+                                        <hr class="m-0">
+                                        <div style="width: 100%; border: none;" class="filters-section">
+                                            <h5>Filters</h5>
+                                            <div class="accordion" id="filtersAccordion">
+                
+                                                <!-- Lists Section -->
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header" id="headingLists">
+                                                        <button class="accordion-button filter-dropdown-header" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLists" aria-expanded="true" aria-controls="collapseLists">
+                                                            Name
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapseLists" class="accordion-collapse collapse show" aria-labelledby="headingLists" data-bs-parent="#filtersAccordion">
+                                                        <div class="accordion-body">
+                                                            <input type="text" class="form-control" placeholder="Search.." aria-label="Username" aria-describedby="basic-addon1">
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                
+                                                <!-- Company Section -->
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header" id="headingCompany">
+                                                        <button class="accordion-button filter-dropdown-header collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCompany" aria-expanded="false" aria-controls="collapseCompany">
+                                                            Job Title
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapseCompany" class="accordion-collapse collapse" aria-labelledby="headingCompany" data-bs-parent="#filtersAccordion">
+                                                        <div class="accordion-body">
+                                                            <input type="text" class="form-control" placeholder="Search.." aria-label="Username" aria-describedby="basic-addon1">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                
+                                                <!-- Account Location Section -->
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header" id="headingLocation">
+                                                        <button class="accordion-button filter-dropdown-header collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLocation" aria-expanded="false" aria-controls="collapseLocation">
+                                                            Designation
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapseLocation" class="accordion-collapse collapse" aria-labelledby="headingLocation" data-bs-parent="#filtersAccordion">
+                                                        <div class="accordion-body">
+                                                            <input type="text" class="form-control" placeholder="Search.." aria-label="Username" aria-describedby="basic-addon1">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                
+                                                <!-- Number of Employees Section -->
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header" id="headingEmployees">
+                                                        <button class="accordion-button filter-dropdown-header collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEmployees" aria-expanded="false" aria-controls="collapseEmployees">
+                                                            Company Name
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapseEmployees" class="accordion-collapse collapse" aria-labelledby="headingEmployees" data-bs-parent="#filtersAccordion">
+                                                        <div class="accordion-body">
+                                                            <input type="text" class="form-control" placeholder="Search.." aria-label="Username" aria-describedby="basic-addon1">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                
+                                            </div>
+                
+                                            <button type="button" class="btn btn-secondary save-search-btn mt-3" disabled>Save Search</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="xyz col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 col-8-xxxl mx-auto my-1 p-2">
+                                    <div style="height: 600px; overflow-y: scroll;" class="p-5 card dashboard-card-six pd-b-20">
+                                        <div class="container">
+                                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                                <div>
+                                                    <h2>Total (278.6M)</h2>
+                                                </div>
+                                                <div>
+                                                    <button type="button" class="btn btn-primary">View Plans</button>
+                                                </div>
+                                            </div>
+                
+                                            <ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
+                                                <li class="nav-item" role="presentation">
+                                                    <button class="nav-link active" id="total-tab" data-bs-toggle="tab" data-bs-target="#total" type="button" role="tab" aria-controls="total" aria-selected="true">Total (278.6M)</button>
+                                                </li>
+                                                <li class="nav-item" role="presentation">
+                                                    <button class="nav-link" id="netnew-tab" data-bs-toggle="tab" data-bs-target="#netnew" type="button" role="tab" aria-controls="netnew" aria-selected="false">Net New (278.6M)</button>
+                                                </li>
+                                                <li class="nav-item" role="presentation">
+                                                    <button class="nav-link" id="saved-tab" data-bs-toggle="tab" data-bs-target="#saved" type="button" role="tab" aria-controls="saved" aria-selected="false">Saved</button>
+                                                </li>
+                                            </ul>
+                
+                                            <div class="tab-content" id="myTabContent">
+                                                <div class="tab-pane fade show active" id="total" role="tabpanel" aria-labelledby="total-tab">
+                                                    <!-- Content for Total tab -->
+                                                    <div class="video-container mb-3">
+                                                        <iframe src="https://www.youtube.com/embed/your-video-id" frameborder="0" allowfullscreen></iframe>
+                                                        <div class="filter-note">Add filters to begin your search</div>
+                                                    </div>
+                                                    <h4>Find the right leads</h4>
+                                                    <p>Start your search by applying filters to hone in on your ideal customer.</p>
+                                                    <div class="d-flex flex-wrap">
+                                                        <button type="button" class="btn btn-outline-secondary m-1">United States</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">United Kingdom</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">VP Sales</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">Founder</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">Director</button>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane fade" id="netnew" role="tabpanel" aria-labelledby="netnew-tab">
+                                                    <!-- Content for Net New tab -->
+                                                    <div class="video-container mb-3">
+                                                        <iframe src="https://www.youtube.com/embed/your-video-id" frameborder="0" allowfullscreen></iframe>
+                                                        <div class="filter-note">Add filters to begin your search</div>
+                                                    </div>
+                                                    <h4>Find the right leads</h4>
+                                                    <p>Start your search by applying filters to hone in on your ideal customer.</p>
+                                                    <div class="d-flex flex-wrap">
+                                                        <button type="button" class="btn btn-outline-secondary m-1">United States</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">United Kingdom</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">VP Sales</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">Founder</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">Director</button>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane fade" id="saved" role="tabpanel" aria-labelledby="saved-tab">
+                                                    <!-- Content for Saved tab -->
+                                                    <div class="video-container mb-3">
+                                                        <iframe src="https://www.youtube.com/embed/your-video-id" frameborder="0" allowfullscreen></iframe>
+                                                        <div class="filter-note">Add filters to begin your search</div>
+                                                    </div>
+                                                    <h4>Find the right leads</h4>
+                                                    <p>Start your search by applying filters to hone in on your ideal customer.</p>
+                                                    <div class="d-flex flex-wrap">
+                                                        <button type="button" class="btn btn-outline-secondary m-1">United States</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">United Kingdom</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">VP Sales</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">Founder</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">Director</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</main>
+
+<!-------------------------Change icon of nav from bars to x ---------------------->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const sidebarCollapseButton = document.getElementById('sidebarCollapse');
+        const sidebar = document.getElementById('sidebar');
+        
+        sidebarCollapseButton.addEventListener('click', function () {
+            const icon = this.querySelector('i');
+            sidebar.classList.toggle('active');
+            
+            if (icon.classList.contains('fa-xmark')) {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            }
+        });
+    });
+</script>
+
+    <script src="js/chart.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
+      <!-- TO display data progressively as the scrapper runs-  --> 
+      <script>
+        $(document).ready(function () {
+            // Handle form submission
+            $("#scraper-form").submit(function (e) {
+                e.preventDefault();
+        
+                const query = $("#query").val();
+                if (!query.trim()) {
+                    alert("Please enter a valid query.");
+                    return;
+                }
+        
+                // Disable the input while scraping is ongoing
+                $("#query").prop("disabled", true);
+                $("#save-data").prop("disabled", true); // Disable Save button until scraping finishes
+        
+                // Start scraping
+                $.ajax({
+                    url: "{% url 'g_scraper' %}",
+                    method: "POST",
+                    data: {
+                        query: query,
+                        csrfmiddlewaretoken: "{{ csrf_token }}"
+                    },
+                    success: function (response) {
+                        // Start polling for data once scraping has started
+                        pollScrapedData();
+                    },
+                    error: function () {
+                        alert("An error occurred while starting the scraper.");
+                    }
+                });
+            });
+        
+            // Poll for scraped data and update the table progressively
+            function pollScrapedData() {
+                const tableBody = $("#scraped-data-table tbody");
+        
+                // Poll the server every 2 seconds for new data
+                function showLoading(isLoading) {
+            if (isLoading) {
+                $("#loading-spinner").show();  // Show loading spinner
+            } else {
+                $("#loading-spinner").hide(); // Hide loading spinner
+            }
+        }
+                let intervalId = setInterval(function () {
+                    $.ajax({
+                        url: "{% url 'get_scraper_progress' %}", // Assuming you have a separate endpoint for progress
+                        method: "GET",
+                        success: function (response) {
+                            showLoading(true);
+                            if (response.data && response.data.length > 0) {
+                                console.log("Received Data :" , response.data);
+                                displayScrapedData(response.data);
+        
+                                // Enable the Save button once data is available
+                                $("#save-data").prop("disabled", false);
+                            }
+        
+                            // If no more data, stop polling
+                            if (response.done) {
+                                clearInterval(intervalId);
+                                $("#query").prop("disabled", false); // Enable input again
+                            }
+                        },
+                        error: function () {
+                            alert("Error fetching scraped data.");
+                        }
+                    });
+                }, 2000); // Poll every 2 seconds
+            }
+        
+            // Display scraped data in the table progressively
+            // function displayScrapedData(data) {
+            //     const tableBody = $("#scraped-data-table tbody");
+            //     console.log("Display : ", data);
+            //     data.forEach(function (business) {
+            //         const row = `<tr>
+            //             <td>${business.name || 'N/A'}</td>
+            //             <td>${business.address || ''}</td> 
+            //             <td>${business.mobile || ''}</td>
+            //             <td>${business.website || ''}</td>
+            //         </tr>`;
+            //         tableBody.append(row);
+            //     });
+            // }
+            function displayScrapedData(data) {
+    const tableBody = $("#scraped-data-table tbody");
+    
+
+    
+    data.forEach(function (business) {
+        const website = business.websites && business.websites.length > 0 
+                        ? business.websites.join(", ") 
+                        : "N/A";
+        const mobile = business.mobiles && business.mobiles.length > 0 
+                        ? business.mobiles.join(", ") 
+                        : "N/A";
+        const address = business.addresses && business.addresses.length > 0 
+                        ? business.addresses.join(", ") 
+                        : "N/A";
+
+        const row = `<tr>
+            <td>${business.name || 'N/A'}</td>
+            <td>${website}</td>
+            <td>${mobile}</td>
+            <td>${address}</td>
+            
+            
+        </tr>`;
+        
+        // Append the row to the table body
+        tableBody.append(row);
+    });
+}
+
+
+            // Save scraped data to the database
+        $("#save-data").click(function () {
+            const tableRows = $("#scraped-data-table tbody tr");
+            if (tableRows.length === 0) {
+                alert("No data to save.");
+                return;
+            }
+            const query = $("#query").val().trim();
+            if(!query) {
+                alert("Query required");
+                return;
+            }
+            let dataToSave = [];
+            tableRows.each(function () {
+                const row = $(this).find("td");
+                const entry = {
+                    name: row.eq(0).text().trim(),
+                    website: row.eq(4).text().trim(),
+                    mobile: row.eq(3).text().trim(),
+                    address: row.eq(2).text().trim(),
+                    
+                    
+                    query : query,
+                };
+                dataToSave.push(entry);
+            });
+            console.log("Data to Save: ", dataToSave);
+            $.ajax({
+                url: "{% url 'save_scraped_data' %}", 
+                method: "POST",
+                data: {
+                    data: JSON.stringify(dataToSave),
+                    csrfmiddlewaretoken: "{{ csrf_token }}"
+                },
+                beforeSend: function () {
+                    console.log("Payload being sent to the server:", JSON.stringify(dataToSave));
+                },
+                success: function (response) {
+                    alert(response.message || "Data saved successfully.");
+                    // Clear the table
+                    $("#scraped-data-table tbody").empty();
+                },
+                error: function (xhr) {
+                    alert(xhr.responseJSON.error || "Error saving data.");
+                }
+            });
+        });
+        // To fetch saved data
+        $("#saved-tab").click(function () {
+    $.ajax({
+        url: "{% url 'get_saved_data' %}",
+        method: "GET",
+        success: function (response) {
+            const tableBody = $("#saved-data-table tbody");
+            tableBody.empty(); 
+            console.log("Get saved Data: ", response.data);
+
+            if (response.data && response.data.length > 0) {
+                response.data.forEach(function (business) {
+                    const row = `<tr>
+                        <td>${business.name || 'N/A'}</td>
+                        <td>${business.website || 'N/A'}</td>
+                        <td>${business.mobile || 'N/A'}</td>
+                        <td>${business.address || 'N/A'}</td>
+                    </tr>`;
+                    tableBody.append(row);
+                });
+            } else {
+                const emptyRow = `<tr><td colspan="4">No saved data available.</td></tr>`;
+                tableBody.append(emptyRow);
+            }
+        },
+        error: function () {
+            alert("Error fetching saved data.");
+        }
+    });
+});
+
+// To display loading message
+$("#start-scraping-button").click(function () {
+    // Show the "Loading" message when scraping starts
+    $("#loading-message").show();
+    $("#completed-message").hide();  // Hide the "Completed" message if it's already visible
+
+    $.ajax({
+        url: "{% url 'g_scraper' %}",  // Your Django URL to start scraping
+        method: "GET",
+        success: function (response) {
+            // Hide the "Loading" message and show the "Completed" message after scraping finishes
+            $("#loading-message").hide();
+            $("#completed-message").show();
+
+            // Optionally, you can now display the scraped data in a table or anywhere on the page
+            const tableBody = $("#saved-data-table tbody");
+            tableBody.empty();  // Clear any existing rows
+            response.data.forEach(function (business) {
+                const row = `<tr>
+                    <td>${business.name || 'N/A'}</td>
+                    <td>${business.website || 'N/A'}</td>
+                    <td>${business.mobile || 'N/A'}</td>
+                    <td>${business.address || 'N/A'}</td>
+                </tr>`;
+                tableBody.append(row);
+            });
+        },
+        error: function () {
+            alert("Error fetching data.");
+            $("#loading-message").hide();  // Hide the loading message if there's an error
+        }
+    });
+});
+
+    });
+
+        
+        </script>
+           
+    
+</body>
+</html> 
+

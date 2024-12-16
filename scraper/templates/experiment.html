@@ -1,0 +1,1543 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>LMS-ERP</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+		
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- bootstrap CSS link -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="All.css">
+
+    
+</head>
+<body style="overflow-x: hidden;" >
+		
+<main style="overflow: hidden;" class="wrapper d-flex align-items-stretch">
+    <nav style="position:relative; overflow-y: scroll;  " class="bg-white sidebar-width" id="sidebar">
+
+        <div style="border: 2px solid rgb(221, 221, 221) !important; background: #ffffff; padding: 10.8px;" class="d-flex CIPL">
+            <a style="padding: 10px 10px 4px 8px;" href="#"><img src="https://www.cdnlogo.com/logos/c/76/c.svg" height="40px" width="40px"></a>
+            <h1 style="font-family:'Franklin Gothic Medium'; padding-top: 8px;  color: #525252" class="m-0 text-center">CIPL</h1>
+        </div>
+        
+		<div style="width: auto;" class=" pt-1">
+        
+            <ul class="ul-list-edit list-unstyled components mb-5">
+                
+                <li class="active" >
+                <a  href="experiment.html"><i class="fa-solid fa-house"></i>Home</a>
+                </li>
+                <hr >
+                <li>
+                    <a href="Class-Routine.html"><i class="fa-solid fa-search"></i>Search</a>
+                </li>
+                <hr>
+                <li>
+                    <a href="Attendence.html"><i class="fa-solid fa-sheet-plastic"></i>Google Extractor</a>
+                </li>
+                <hr>
+                <li>
+                    <a href="Transport.html"><i class="fa-brands fa-linkedin"></i>Linkedin Extractor</a>
+                </li>
+                <hr>
+                <li>
+                    <a href="Account.html"><i class="fa-solid fa-gears"></i>Account</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!---------------- Page Content Area start here---------------------------------->
+    <div style="background-color: #d5dbe0;" id="content">
+        <div class="d-flex">
+            <button style="border-radius: 0px !important; border: none !important; background: white !important;" type="button" id="sidebarCollapse" class="btn sidebar-butun">
+                <i style="font-size: 25px;" class="fa-solid fa-bars"></i>
+                <span class="sr-only">Toggle Menu</span>
+            </button>
+
+            <!-- ===========================Navbar=========================================== -->
+            <nav style="width: 100%;" class="navbar navbar-expand-lg navbar-light bg-white border-design">
+                <div class="container">
+                    <div style="width: 40%;" class="input-group stylish-input-group">
+                        <span class="input-group-add">
+                            <button style="border: none; background: none;" type="submit">
+                                <span style="font-size: 25px; color: gray; margin-left: 20px; padding:15px 0px 12px 12px;" class="fa-solid fa-magnifying-glass" aria-hidden="true"></span>
+                            </button>
+                        </span>
+                        <input style="border: none; border-radius: 10px; margin: 8px; font-size: 16px;" type="text" class="form-control Form-Control" placeholder="Find Something . . .">
+                    </div>
+                </div>
+            </nav>
+            <!-----------------------------------------Navigation End Here --------------------------------------->
+        </div>
+
+        <!-----------------------------------Admin Dashboard main start ------------------------------------------------->
+        <div  class="dashboard-content-one">
+            <div class="row gutters-20 ">
+
+                <div style="height: max-content;" class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-12-xxxl">
+                    <hr style="margin: 0px; color: rgb(94, 93, 93);">
+                    <h4 style="background-color: white;" class="m-0 p-2">Search</h4>
+                    <ul style="background-color: white;" class="p-2 nav nav-pills mb-1" id="pills-tab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Peoples</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Companies</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Saved lists</button>
+                        </li>
+                    </ul>
+                
+                    <div class="mx-1 tab-content" id="pills-tabContent">
+<!-- ===================================Home-Tab====================================== -->
+                        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+                            <div class="col-response d-flex " style="display: flex;">
+                                <div class="abc col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 col-4-xxxl mx-auto my-1 p-2">
+                                    <div style="height: 100vh; overflow-y: scroll; scrollbar-width: 0px;" class="hide-scrollbar card dashboard-card-six pd-b-20">
+                                        <p class="p-3 m-0">Search</p>
+                                        <hr class="m-0">
+                                        <div class="px-2 d-flex">
+                                            <i style="font-size: 20px;" class="py-3 px-2 fa-solid fa-search"></i>
+                                            <input style="border: none;" class="p-2" type="text" placeholder="Search Companies...">
+                                        </div>
+                                        <hr class="m-0">
+                                        <div style="width: 100%; border: none;" class="filters-section">
+                                            <h5>Filters</h5>
+                                            <div class="accordion" id="filtersAccordion">
+                
+                                                <!-- Name Section -->
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header" id="headingLists">
+                                                        <button class="accordion-button filter-dropdown-header" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLists" aria-expanded="true" aria-controls="collapseLists">
+                                                            Name
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapseLists" class="accordion-collapse collapse show" aria-labelledby="headingLists" data-bs-parent="#filtersAccordion">
+                                                        <div class="accordion-body">
+                                                            <input type="text" class="form-control" placeholder="Search.." aria-label="Username" aria-describedby="basic-addon1">
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                
+                                                <!-- Job_Title Section -->
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header" id="headingCompany">
+                                                        <button class="accordion-button filter-dropdown-header collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCompany" aria-expanded="false" aria-controls="collapseCompany">
+                                                            Job Title
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapseCompany" class="accordion-collapse collapse" aria-labelledby="headingCompany" data-bs-parent="#filtersAccordion">
+                                                        <div class="accordion-body">
+                                                            <input type="text" class="form-control" placeholder="Search.." aria-label="Username" aria-describedby="basic-addon1">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                
+                                                <!-- Designation Section -->
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header" id="headingLocation">
+                                                        <button class="accordion-button filter-dropdown-header collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLocation" aria-expanded="false" aria-controls="collapseLocation">
+                                                            Designation
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapseLocation" class="accordion-collapse collapse" aria-labelledby="headingLocation" data-bs-parent="#filtersAccordion">
+                                                        <div class="accordion-body">
+                                                            <input type="text" class="form-control" placeholder="Search.." aria-label="Username" aria-describedby="basic-addon1">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                
+                                                <!-- Company Name Section -->
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header" id="headingEmployees">
+                                                        <button class="accordion-button filter-dropdown-header collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEmployees" aria-expanded="false" aria-controls="collapseEmployees">
+                                                            Company Name
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapseEmployees" class="accordion-collapse collapse" aria-labelledby="headingEmployees" data-bs-parent="#filtersAccordion">
+                                                        <div class="accordion-body">
+                                                            <input type="text" class="form-control" placeholder="Search.." aria-label="Username" aria-describedby="basic-addon1">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                
+                                            </div>
+                
+                                            <button type="button" class="btn btn-secondary save-search-btn mt-3" disabled>Save Search</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- =================Table-Section============== -->
+                                <div class="xyz col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 col-8-xxxl mx-auto my-1 p-2">
+                                    <div style="height: 100vh; overflow-y: scroll;" class="p-5 card dashboard-card-six pd-b-20">
+                                        <div class="T-278-edit">
+                                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                                <div>
+                                                    <h2 class="total-278" >Total (278.6M)</h2>
+                                                </div>
+                                                <div>
+                                                    <button type="button" class="btn btn-primary vp-edit">View Plans</button>
+                                                </div>
+                                            </div>
+                                            <!-- ============Tabs Header================ -->
+                                            <ul class="tab-sec-278 nav nav-tabs mb-3" id="myTab" role="tablist">
+                                                <li class="nav-item" role="presentation">
+                                                    <button class="nav-link active" id="total-tab" data-bs-toggle="tab" data-bs-target="#total" type="button" role="tab" aria-controls="total" aria-selected="true">Total (278.6M)</button>
+                                                </li>
+                                                <li class="nav-item" role="presentation">
+                                                    <button class="nav-link" id="netnew-tab" data-bs-toggle="tab" data-bs-target="#netnew" type="button" role="tab" aria-controls="netnew" aria-selected="false">Net New (278.6M)</button>
+                                                </li>
+                                                <li class="nav-item" role="presentation">
+                                                    <button class="nav-link" id="saved-tab" data-bs-toggle="tab" data-bs-target="#saved" type="button" role="tab" aria-controls="saved" aria-selected="false">Saved</button>
+                                                </li>
+                                            </ul>
+                                            <!-- ===============Tabs====================== -->
+                                            <div class="tab-content" id="myTabContent">
+                                                <!-- ============Tab-1============ -->
+                                                <div class="tab-pane fade show active" id="total" role="tabpanel" aria-labelledby="total-tab">
+                                                    <!-- Content for Total tab -->
+                                                    <div style="height: 1000px;" class="video-container mb-3">
+                                                        <!-- ================================== -->
+                                                        <!-- ===================================== -->
+                                                        <div class="DE-sec" id="">
+                                                            <div class="">
+                                                                <h1 style="margin-bottom: 50px;">Data Extracter</h1>    
+                                                                <div style="border: none;" class="card height-auto">
+                                                                    <div class="card-body px-0">
+                                                                        <form class="mg-b-20 mb-3">
+                                                                            <div style="justify-content: space-between;" class="row gutters-8">
+                                                                                <div  class= "my-2 col-4-xxxl col-xl-6 col-lg-3 col-12 form-group">
+                                                                                    <input style="width: 100%; padding: 15px;" type="text" placeholder="Pest control services Dubai" >
+                                                                                </div>
+                                                                                <div  class="my-1 col-1-xxxl col-xl-6 col-lg-3 col-12 form-group">
+                                                                                    <h3>Start</h3>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                    
+                                                                        <form class="mg-b-20 mb-3">
+                                                                            <div class="row gutters-8">
+                                                                                
+                                                                                <div class="col-4-xxxl col-xl-4 col-lg-3 col-12 form-group">
+                                                                                    <h3>Export</h3>
+                                                                                </div>
+                                                                                <div class="col-4-xxxl col-xl-4 col-lg-3 col-12 form-group">
+                                                                                    <h3>Reset</h3>
+                                                                                </div>
+                                                                                <div class="col-1-xxxl col-xl-4 col-lg-3 col-12 form-group">
+                                                                                    <h3>Exit</h3>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                                        <div style="height: 650px; overflow-y: scroll;" class="table-responsive hidee-scrollbar">
+                                                                            <table style="background: rgb(238, 236, 236);" class="table display data-table text-nowrap">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th><label class="form-check-label">ID</label></th>
+                                                                                        <!-- <th>Photo</th> -->
+                                                                                        <th>Name</th>
+                                                                                        <th>Website</th>
+                                                                                        <th>Phone</th>
+                                                                                        <th>E-mail</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                    <tr class="row-hover" >
+                                                                                        <td><label class="form-check-label">#0021</label></td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student2.png" alt="student"></td>
+                                                                                        <td>Mark Willy</td>
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td><label class="form-check-label">#0022</label></td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student3.png" alt="student"></td>
+                                                                                        <td>Jessia Rose</td>
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0023</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student4.png" alt="student">
+                                                                                        </td>
+                                                                                        <td>Mark Willy</td>
+                                                                                        
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0024</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student5.png" alt="student"></td>
+                                                                                        <td>Jessia Rose</td>
+                                                                                        
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0025</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student6.png" alt="student"></td>
+                                                                                        <td>Mark Willy</td>
+                                                                                        
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0026</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student7.png" alt="student"></td>
+                                                                                        <td>Jessia Rose</td>
+                                                                                        
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0027</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student8.png" alt="student"></td>
+                                                                                        <td>Mark Willy</td>
+                                                                                        
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0028</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student9.png" alt="student"></td>
+                                                                                        <td>Jessia Rose</td>
+                                                                                        
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0029</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student10.png" alt="student"></td>
+                                                                                        <td>Mark Willy</td>
+                                                                                        
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0030</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student6.png" alt="student"></td>
+                                                                                        <td>Jessia Rose</td>
+                                                                                        
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0021</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student2.png" alt="student"></td>
+                                                                                        <td>Mark Willy</td>
+                                                                                        
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0021</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student2.png" alt="student"></td>
+                                                                                        <td>Mark Willy</td>
+                                                                                        
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0022</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student3.png" alt="student"></td>
+                                                                                        <td>Jessia Rose</td>
+                                                                                        
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0023</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student4.png" alt="student"></td>
+                                                                                        <td>Mark Willy</td>
+                                                                                        
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0024</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student5.png" alt="student"></td>
+                                                                                        <td>Jessia Rose</td>
+                                                                                        
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0025</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student6.png" alt="student"></td>
+                                                                                        <td>Mark Willy</td>
+                                                                                        
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0026</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student7.png" alt="student"></td>
+                                                                                        <td>Jessia Rose</td>
+                                                                                        
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0027</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student8.png" alt="student"></td>
+                                                                                        <td>Mark Willy</td>
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0028</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student9.png" alt="student"></td>
+                                                                                        <td>Jessia Rose</td>
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0029</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student10.png" alt="student"></td>
+                                                                                        <td>Mark Willy</td>
+                                                                                        
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0030</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student6.png" alt="student"></td>
+                                                                                        <td>Jessia Rose</td>
+                                                                                        
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0021</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student2.png" alt="student"></td>
+                                                                                        <td>Mark Willy</td>
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- ============================================= -->
+                                                        <!-- <div class="filter-note">Add filters to begin your search</div> -->
+                                                    </div>
+                                                    <h4>Find the right leads</h4>
+                                                    <p>Start your search by applying filters to hone in on your ideal customer.</p>
+                                                    <div class="d-flex flex-wrap">
+                                                        <button type="button" class="btn btn-outline-secondary m-1">United States</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">United Kingdom</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">VP Sales</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">Founder</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">Director</button>
+                                                    </div>
+                                                </div>
+                                                <!-- ============Tab-2============ -->
+                                                <div class="tab-pane fade" id="netnew" role="tabpanel" aria-labelledby="netnew-tab">
+                                                    <!-- Content for Net New tab -->
+                                                    <div style="height: 1000px;" class="video-container mb-3">
+                                                        <!-- ================================== -->
+                                                        <!-- ===================================== -->
+                                                        <div class="DE-sec" id="">
+                                                            <div class="">
+                                                                <h1 style="margin-bottom: 50px;">Data Extracter</h1>    
+                                                                <div style="border: none;" class="card height-auto">
+                                                                    <div class="card-body px-0">
+                                                                        <form class="mg-b-20 mb-3">
+                                                                            <div style="justify-content: space-between;" class="row gutters-8">
+                                                                                <div  class= "my-2 col-4-xxxl col-xl-6 col-lg-3 col-12 form-group">
+                                                                                    <input style="width: 100%; padding: 15px;" type="text" placeholder="Pest control services Dubai" >
+                                                                                </div>
+                                                                                <div  class="my-1 col-1-xxxl col-xl-6 col-lg-3 col-12 form-group">
+                                                                                    <h3>Start</h3>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                    
+                                                                        <form class="mg-b-20 mb-3">
+                                                                            <div class="row gutters-8">
+                                                                                
+                                                                                <div class="col-4-xxxl col-xl-4 col-lg-3 col-12 form-group">
+                                                                                    <h3>Export</h3>
+                                                                                </div>
+                                                                                <div class="col-4-xxxl col-xl-4 col-lg-3 col-12 form-group">
+                                                                                    <h3>Reset</h3>
+                                                                                </div>
+                                                                                <div class="col-1-xxxl col-xl-4 col-lg-3 col-12 form-group">
+                                                                                    <h3>Exit</h3>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                                        <div style="height: 650px; overflow-y: scroll;" class="table-responsive hidee-scrollbar">
+                                                                            <table style="background: rgb(238, 236, 236);" class="table display data-table text-nowrap">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th><label class="form-check-label">ID</label></th>
+                                                                                        <th>Photo</th>
+                                                                                        <th>Name</th>
+                                                                                        <th>Website</th>
+                                                                                        <th>Phone</th>
+                                                                                        <th>E-mail</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                    <tr class="row-hover" >
+                                                                                        <td><label class="form-check-label">#0021</label></td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student2.png" alt="student"></td>
+                                                                                        <td>Mark Willy</td>
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td><label class="form-check-label">#0022</label></td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student3.png" alt="student"></td>
+                                                                                        <td>Jessia Rose</td>
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0023</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student4.png" alt="student">
+                                                                                        </td>
+                                                                                        <td>Mark Willy</td>
+                                                                                        
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0024</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student5.png" alt="student"></td>
+                                                                                        <td>Jessia Rose</td>
+                                                                                        
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0025</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student6.png" alt="student"></td>
+                                                                                        <td>Mark Willy</td>
+                                                                                        
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0026</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student7.png" alt="student"></td>
+                                                                                        <td>Jessia Rose</td>
+                                                                                        
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0027</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student8.png" alt="student"></td>
+                                                                                        <td>Mark Willy</td>
+                                                                                        
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0028</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student9.png" alt="student"></td>
+                                                                                        <td>Jessia Rose</td>
+                                                                                        
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0029</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student10.png" alt="student"></td>
+                                                                                        <td>Mark Willy</td>
+                                                                                        
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0030</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student6.png" alt="student"></td>
+                                                                                        <td>Jessia Rose</td>
+                                                                                        
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0021</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student2.png" alt="student"></td>
+                                                                                        <td>Mark Willy</td>
+                                                                                        
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0021</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student2.png" alt="student"></td>
+                                                                                        <td>Mark Willy</td>
+                                                                                        
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0022</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student3.png" alt="student"></td>
+                                                                                        <td>Jessia Rose</td>
+                                                                                        
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0023</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student4.png" alt="student"></td>
+                                                                                        <td>Mark Willy</td>
+                                                                                        
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0024</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student5.png" alt="student"></td>
+                                                                                        <td>Jessia Rose</td>
+                                                                                        
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0025</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student6.png" alt="student"></td>
+                                                                                        <td>Mark Willy</td>
+                                                                                        
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0026</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student7.png" alt="student"></td>
+                                                                                        <td>Jessia Rose</td>
+                                                                                        
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0027</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student8.png" alt="student"></td>
+                                                                                        <td>Mark Willy</td>
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0028</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student9.png" alt="student"></td>
+                                                                                        <td>Jessia Rose</td>
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0029</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student10.png" alt="student"></td>
+                                                                                        <td>Mark Willy</td>
+                                                                                        
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0030</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student6.png" alt="student"></td>
+                                                                                        <td>Jessia Rose</td>
+                                                                                        
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0021</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student2.png" alt="student"></td>
+                                                                                        <td>Mark Willy</td>
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- ============================================= -->
+                                                        <!-- <div class="filter-note">Add filters to begin your search</div> -->
+                                                    </div>
+                                                    <h4>Find the right leads</h4>
+                                                    <p>Start your search by applying filters to hone in on your ideal customer.</p>
+                                                    <div class="d-flex flex-wrap">
+                                                        <button type="button" class="btn btn-outline-secondary m-1">United States</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">United Kingdom</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">VP Sales</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">Founder</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">Director</button>
+                                                    </div>
+                                                </div>
+                                                <!-- ============Tab-3============ -->
+                                                <div class="tab-pane fade" id="saved" role="tabpanel" aria-labelledby="saved-tab">
+                                                    <!-- Content for Saved tab -->
+                                                    <div style="height: 1000px;" class="video-container mb-3">
+                                                        <!-- ================================== -->
+                                                        <!-- ===================================== -->
+                                                        <div class="DE-sec" id="">
+                                                            <div class="">
+                                                                <h1 style="margin-bottom: 50px;">Data Extracter</h1>    
+                                                                <div style="border: none;" class="card height-auto">
+                                                                    <div class="card-body px-0">
+                                                                        <form class="mg-b-20 mb-3">
+                                                                            <div style="justify-content: space-between;" class="row gutters-8">
+                                                                                <div  class= "my-2 col-4-xxxl col-xl-6 col-lg-3 col-12 form-group">
+                                                                                    <input style="width: 100%; padding: 15px;" type="text" placeholder="Pest control services Dubai" >
+                                                                                </div>
+                                                                                <div  class="my-1 col-1-xxxl col-xl-6 col-lg-3 col-12 form-group">
+                                                                                    <h3>Start</h3>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                    
+                                                                        <form class="mg-b-20 mb-3">
+                                                                            <div class="row gutters-8">
+                                                                                
+                                                                                <div class="col-4-xxxl col-xl-4 col-lg-3 col-12 form-group">
+                                                                                    <h3>Export</h3>
+                                                                                </div>
+                                                                                <div class="col-4-xxxl col-xl-4 col-lg-3 col-12 form-group">
+                                                                                    <h3>Reset</h3>
+                                                                                </div>
+                                                                                <div class="col-1-xxxl col-xl-4 col-lg-3 col-12 form-group">
+                                                                                    <h3>Exit</h3>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                                        <div style="height: 650px; overflow-y: scroll;" class="table-responsive hidee-scrollbar">
+                                                                            <table style="background: rgb(238, 236, 236);" class="table display data-table text-nowrap">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th><label class="form-check-label">ID</label></th>
+                                                                                        <th>Photo</th>
+                                                                                        <th>Name</th>
+                                                                                        <th>Website</th>
+                                                                                        <th>Phone</th>
+                                                                                        <th>E-mail</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                    <tr class="row-hover" >
+                                                                                        <td><label class="form-check-label">#0021</label></td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student2.png" alt="student"></td>
+                                                                                        <td>Mark Willy</td>
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td><label class="form-check-label">#0022</label></td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student3.png" alt="student"></td>
+                                                                                        <td>Jessia Rose</td>
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0023</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student4.png" alt="student">
+                                                                                        </td>
+                                                                                        <td>Mark Willy</td>
+                                                                                        
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0024</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student5.png" alt="student"></td>
+                                                                                        <td>Jessia Rose</td>
+                                                                                        
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0025</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student6.png" alt="student"></td>
+                                                                                        <td>Mark Willy</td>
+                                                                                        
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0026</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student7.png" alt="student"></td>
+                                                                                        <td>Jessia Rose</td>
+                                                                                        
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0027</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student8.png" alt="student"></td>
+                                                                                        <td>Mark Willy</td>
+                                                                                        
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0028</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student9.png" alt="student"></td>
+                                                                                        <td>Jessia Rose</td>
+                                                                                        
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0029</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student10.png" alt="student"></td>
+                                                                                        <td>Mark Willy</td>
+                                                                                        
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0030</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student6.png" alt="student"></td>
+                                                                                        <td>Jessia Rose</td>
+                                                                                        
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0021</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student2.png" alt="student"></td>
+                                                                                        <td>Mark Willy</td>
+                                                                                        
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0021</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student2.png" alt="student"></td>
+                                                                                        <td>Mark Willy</td>
+                                                                                        
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0022</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student3.png" alt="student"></td>
+                                                                                        <td>Jessia Rose</td>
+                                                                                        
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0023</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student4.png" alt="student"></td>
+                                                                                        <td>Mark Willy</td>
+                                                                                        
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0024</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student5.png" alt="student"></td>
+                                                                                        <td>Jessia Rose</td>
+                                                                                        
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0025</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student6.png" alt="student"></td>
+                                                                                        <td>Mark Willy</td>
+                                                                                        
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0026</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student7.png" alt="student"></td>
+                                                                                        <td>Jessia Rose</td>
+                                                                                        
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0027</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student8.png" alt="student"></td>
+                                                                                        <td>Mark Willy</td>
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0028</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student9.png" alt="student"></td>
+                                                                                        <td>Jessia Rose</td>
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0029</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student10.png" alt="student"></td>
+                                                                                        <td>Mark Willy</td>
+                                                                                        
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0030</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student6.png" alt="student"></td>
+                                                                                        <td>Jessia Rose</td>
+                                                                                        
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <label class="form-check-label">#0021</label>
+                                                                                        </td>
+                                                                                        <td ><img src="https://www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/img/figure/student2.png" alt="student"></td>
+                                                                                        <td>Mark Willy</td>
+                                                                                        <td>www.google.com</td>
+                                                                                        <td>+ 123 9988568</td>
+                                                                                        <td>xyz@gmail.com</td>
+                                                                                        
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- ============================================= -->
+                                                        <!-- <div class="filter-note">Add filters to begin your search</div> -->
+                                                    </div>
+                                                    <h4>Find the right leads</h4>
+                                                    <p>Start your search by applying filters to hone in on your ideal customer.</p>
+                                                    <div class="d-flex flex-wrap">
+                                                        <button type="button" class="btn btn-outline-secondary m-1">United States</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">United Kingdom</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">VP Sales</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">Founder</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">Director</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- =================Tabs-End================ -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+<!-- ==================================Profile-Tab===================================== -->
+                        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
+                            <div class="col-response d-flex " style="display: flex;">
+                                <div class="abc col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 col-4-xxxl mx-auto my-1 p-2">
+                                    <div style="height: 600px; overflow-y: scroll; scrollbar-width: 0px;" class="hide-scrollbar card dashboard-card-six pd-b-20">
+                                        <p class="p-3 m-0">Search</p>
+                                        <hr class="m-0">
+                                        <div class="px-2 d-flex">
+                                            <i style="font-size: 20px;" class="py-3 px-2 fa-solid fa-search"></i>
+                                            <input style="border: none;" class="p-2" type="text" placeholder="Search Companies...">
+                                        </div>
+                                        <hr class="m-0">
+                                        <div style="width: 100%; border: none;" class="filters-section">
+                                            <h5>Filters</h5>
+                                            <div class="accordion" id="filtersAccordion">
+                
+                                                <!-- Lists Section -->
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header" id="headingLists">
+                                                        <button class="accordion-button filter-dropdown-header" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLists" aria-expanded="true" aria-controls="collapseLists">
+                                                            Name
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapseLists" class="accordion-collapse collapse show" aria-labelledby="headingLists" data-bs-parent="#filtersAccordion">
+                                                        <div class="accordion-body">
+                                                            <input type="text" class="form-control" placeholder="Search.." aria-label="Username" aria-describedby="basic-addon1">
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                
+                                                <!-- Company Section -->
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header" id="headingCompany">
+                                                        <button class="accordion-button filter-dropdown-header collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCompany" aria-expanded="false" aria-controls="collapseCompany">
+                                                            Job Title
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapseCompany" class="accordion-collapse collapse" aria-labelledby="headingCompany" data-bs-parent="#filtersAccordion">
+                                                        <div class="accordion-body">
+                                                            <input type="text" class="form-control" placeholder="Search.." aria-label="Username" aria-describedby="basic-addon1">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                
+                                                <!-- Account Location Section -->
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header" id="headingLocation">
+                                                        <button class="accordion-button filter-dropdown-header collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLocation" aria-expanded="false" aria-controls="collapseLocation">
+                                                            Designation
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapseLocation" class="accordion-collapse collapse" aria-labelledby="headingLocation" data-bs-parent="#filtersAccordion">
+                                                        <div class="accordion-body">
+                                                            <input type="text" class="form-control" placeholder="Search.." aria-label="Username" aria-describedby="basic-addon1">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                
+                                                <!-- Number of Employees Section -->
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header" id="headingEmployees">
+                                                        <button class="accordion-button filter-dropdown-header collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEmployees" aria-expanded="false" aria-controls="collapseEmployees">
+                                                            Company Name
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapseEmployees" class="accordion-collapse collapse" aria-labelledby="headingEmployees" data-bs-parent="#filtersAccordion">
+                                                        <div class="accordion-body">
+                                                            <input type="text" class="form-control" placeholder="Search.." aria-label="Username" aria-describedby="basic-addon1">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                
+                                            </div>
+                
+                                            <button type="button" class="btn btn-secondary save-search-btn mt-3" disabled>Save Search</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="xyz col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 col-8-xxxl mx-auto my-1 p-2">
+                                    <div style="height: 600px; overflow-y: scroll;" class="p-5 card dashboard-card-six pd-b-20">
+                                        <div class="container">
+                                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                                <div>
+                                                    <h2>Total (278.6M)</h2>
+                                                </div>
+                                                <div>
+                                                    <button type="button" class="btn btn-primary">View Plans</button>
+                                                </div>
+                                            </div>
+                
+                                            <ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
+                                                <li class="nav-item" role="presentation">
+                                                    <button class="nav-link active" id="total-tab" data-bs-toggle="tab" data-bs-target="#total" type="button" role="tab" aria-controls="total" aria-selected="true">Total (278.6M)</button>
+                                                </li>
+                                                <li class="nav-item" role="presentation">
+                                                    <button class="nav-link" id="netnew-tab" data-bs-toggle="tab" data-bs-target="#netnew" type="button" role="tab" aria-controls="netnew" aria-selected="false">Net New (278.6M)</button>
+                                                </li>
+                                                <li class="nav-item" role="presentation">
+                                                    <button class="nav-link" id="saved-tab" data-bs-toggle="tab" data-bs-target="#saved" type="button" role="tab" aria-controls="saved" aria-selected="false">Saved</button>
+                                                </li>
+                                            </ul>
+                
+                                            <div class="tab-content" id="myTabContent">
+                                                <div class="tab-pane fade show active" id="total" role="tabpanel" aria-labelledby="total-tab">
+                                                    <!-- Content for Total tab -->
+                                                    <div class="video-container mb-3">
+                                                        <iframe src="https://www.youtube.com/embed/your-video-id" frameborder="0" allowfullscreen></iframe>
+                                                        <div class="filter-note">Add filters to begin your search</div>
+                                                    </div>
+                                                    <h4>Find the right leads</h4>
+                                                    <p>Start your search by applying filters to hone in on your ideal customer.</p>
+                                                    <div class="d-flex flex-wrap">
+                                                        <button type="button" class="btn btn-outline-secondary m-1">United States</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">United Kingdom</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">VP Sales</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">Founder</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">Director</button>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane fade" id="netnew" role="tabpanel" aria-labelledby="netnew-tab">
+                                                    <!-- Content for Net New tab -->
+                                                    <div class="video-container mb-3">
+                                                        <iframe src="https://www.youtube.com/embed/your-video-id" frameborder="0" allowfullscreen></iframe>
+                                                        <div class="filter-note">Add filters to begin your search</div>
+                                                    </div>
+                                                    <h4>Find the right leads</h4>
+                                                    <p>Start your search by applying filters to hone in on your ideal customer.</p>
+                                                    <div class="d-flex flex-wrap">
+                                                        <button type="button" class="btn btn-outline-secondary m-1">United States</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">United Kingdom</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">VP Sales</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">Founder</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">Director</button>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane fade" id="saved" role="tabpanel" aria-labelledby="saved-tab">
+                                                    <!-- Content for Saved tab -->
+                                                    <div class="video-container mb-3">
+                                                        <iframe src="https://www.youtube.com/embed/your-video-id" frameborder="0" allowfullscreen></iframe>
+                                                        <div class="filter-note">Add filters to begin your search</div>
+                                                    </div>
+                                                    <h4>Find the right leads</h4>
+                                                    <p>Start your search by applying filters to hone in on your ideal customer.</p>
+                                                    <div class="d-flex flex-wrap">
+                                                        <button type="button" class="btn btn-outline-secondary m-1">United States</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">United Kingdom</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">VP Sales</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">Founder</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">Director</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+<!-- ================================Contact-Tab======================================== -->
+                        <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabindex="0">
+                            <div class="col-response d-flex " style="display: flex;">
+                                <div class="abc col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 col-4-xxxl mx-auto my-1 p-2">
+                                    <div style="height: 600px; overflow-y: scroll; scrollbar-width: 0px;" class="hide-scrollbar card dashboard-card-six pd-b-20">
+                                        <p class="p-3 m-0">Search</p>
+                                        <hr class="m-0">
+                                        <div class="px-2 d-flex">
+                                            <i style="font-size: 20px;" class="py-3 px-2 fa-solid fa-search"></i>
+                                            <input style="border: none;" class="p-2" type="text" placeholder="Search Companies...">
+                                        </div>
+                                        <hr class="m-0">
+                                        <div style="width: 100%; border: none;" class="filters-section">
+                                            <h5>Filters</h5>
+                                            <div class="accordion" id="filtersAccordion">
+                
+                                                <!-- Lists Section -->
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header" id="headingLists">
+                                                        <button class="accordion-button filter-dropdown-header" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLists" aria-expanded="true" aria-controls="collapseLists">
+                                                            Name
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapseLists" class="accordion-collapse collapse show" aria-labelledby="headingLists" data-bs-parent="#filtersAccordion">
+                                                        <div class="accordion-body">
+                                                            <input type="text" class="form-control" placeholder="Search.." aria-label="Username" aria-describedby="basic-addon1">
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                
+                                                <!-- Company Section -->
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header" id="headingCompany">
+                                                        <button class="accordion-button filter-dropdown-header collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCompany" aria-expanded="false" aria-controls="collapseCompany">
+                                                            Job Title
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapseCompany" class="accordion-collapse collapse" aria-labelledby="headingCompany" data-bs-parent="#filtersAccordion">
+                                                        <div class="accordion-body">
+                                                            <input type="text" class="form-control" placeholder="Search.." aria-label="Username" aria-describedby="basic-addon1">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                
+                                                <!-- Account Location Section -->
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header" id="headingLocation">
+                                                        <button class="accordion-button filter-dropdown-header collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLocation" aria-expanded="false" aria-controls="collapseLocation">
+                                                            Designation
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapseLocation" class="accordion-collapse collapse" aria-labelledby="headingLocation" data-bs-parent="#filtersAccordion">
+                                                        <div class="accordion-body">
+                                                            <input type="text" class="form-control" placeholder="Search.." aria-label="Username" aria-describedby="basic-addon1">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                
+                                                <!-- Number of Employees Section -->
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header" id="headingEmployees">
+                                                        <button class="accordion-button filter-dropdown-header collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEmployees" aria-expanded="false" aria-controls="collapseEmployees">
+                                                            Company Name
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapseEmployees" class="accordion-collapse collapse" aria-labelledby="headingEmployees" data-bs-parent="#filtersAccordion">
+                                                        <div class="accordion-body">
+                                                            <input type="text" class="form-control" placeholder="Search.." aria-label="Username" aria-describedby="basic-addon1">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                
+                                            </div>
+                
+                                            <button type="button" class="btn btn-secondary save-search-btn mt-3" disabled>Save Search</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="xyz col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 col-8-xxxl mx-auto my-1 p-2">
+                                    <div style="height: 600px; overflow-y: scroll;" class="p-5 card dashboard-card-six pd-b-20">
+                                        <div class="container">
+                                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                                <div>
+                                                    <h2>Total (278.6M)</h2>
+                                                </div>
+                                                <div>
+                                                    <button type="button" class="btn btn-primary">View Plans</button>
+                                                </div>
+                                            </div>
+                
+                                            <ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
+                                                <li class="nav-item" role="presentation">
+                                                    <button class="nav-link active" id="total-tab" data-bs-toggle="tab" data-bs-target="#total" type="button" role="tab" aria-controls="total" aria-selected="true">Total (278.6M)</button>
+                                                </li>
+                                                <li class="nav-item" role="presentation">
+                                                    <button class="nav-link" id="netnew-tab" data-bs-toggle="tab" data-bs-target="#netnew" type="button" role="tab" aria-controls="netnew" aria-selected="false">Net New (278.6M)</button>
+                                                </li>
+                                                <li class="nav-item" role="presentation">
+                                                    <button class="nav-link" id="saved-tab" data-bs-toggle="tab" data-bs-target="#saved" type="button" role="tab" aria-controls="saved" aria-selected="false">Saved</button>
+                                                </li>
+                                            </ul>
+                
+                                            <div class="tab-content" id="myTabContent">
+                                                <div class="tab-pane fade show active" id="total" role="tabpanel" aria-labelledby="total-tab">
+                                                    <!-- Content for Total tab -->
+                                                    <div class="video-container mb-3">
+                                                        <iframe src="https://www.youtube.com/embed/your-video-id" frameborder="0" allowfullscreen></iframe>
+                                                        <div class="filter-note">Add filters to begin your search</div>
+                                                    </div>
+                                                    <h4>Find the right leads</h4>
+                                                    <p>Start your search by applying filters to hone in on your ideal customer.</p>
+                                                    <div class="d-flex flex-wrap">
+                                                        <button type="button" class="btn btn-outline-secondary m-1">United States</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">United Kingdom</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">VP Sales</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">Founder</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">Director</button>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane fade" id="netnew" role="tabpanel" aria-labelledby="netnew-tab">
+                                                    <!-- Content for Net New tab -->
+                                                    <div class="video-container mb-3">
+                                                        <iframe src="https://www.youtube.com/embed/your-video-id" frameborder="0" allowfullscreen></iframe>
+                                                        <div class="filter-note">Add filters to begin your search</div>
+                                                    </div>
+                                                    <h4>Find the right leads</h4>
+                                                    <p>Start your search by applying filters to hone in on your ideal customer.</p>
+                                                    <div class="d-flex flex-wrap">
+                                                        <button type="button" class="btn btn-outline-secondary m-1">United States</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">United Kingdom</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">VP Sales</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">Founder</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">Director</button>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane fade" id="saved" role="tabpanel" aria-labelledby="saved-tab">
+                                                    <!-- Content for Saved tab -->
+                                                    <div class="video-container mb-3">
+                                                        <iframe src="https://www.youtube.com/embed/your-video-id" frameborder="0" allowfullscreen></iframe>
+                                                        <div class="filter-note">Add filters to begin your search</div>
+                                                    </div>
+                                                    <h4>Find the right leads</h4>
+                                                    <p>Start your search by applying filters to hone in on your ideal customer.</p>
+                                                    <div class="d-flex flex-wrap">
+                                                        <button type="button" class="btn btn-outline-secondary m-1">United States</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">United Kingdom</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">VP Sales</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">Founder</button>
+                                                        <button type="button" class="btn btn-outline-secondary m-1">Director</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</main>
+
+<!-------------------------Change icon of nav from bars to x ---------------------->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const sidebarCollapseButton = document.getElementById('sidebarCollapse');
+        const sidebar = document.getElementById('sidebar');
+        
+        sidebarCollapseButton.addEventListener('click', function () {
+            const icon = this.querySelector('i');
+            sidebar.classList.toggle('active');
+            
+            if (icon.classList.contains('fa-xmark')) {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            }
+        });
+    });
+</script>
+
+    <script src="js/chart.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
+    
+</body>
+</html>
