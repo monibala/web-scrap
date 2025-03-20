@@ -18,6 +18,7 @@ class GoogleMapsScraper:
         chrome_options = Options()
         chrome_options.add_argument("--headless")  # Uncomment for headless mode
         options.add_argument("--no-sandbox")
+        options.add_argument("--disable-dev-shm-usage")
         chrome_options.add_argument("--disable-gpu")
         chrome_options.add_argument('--window-size=1920x1080')
         # Increase timeout settings
