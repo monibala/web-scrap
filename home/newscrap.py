@@ -13,7 +13,7 @@ class GoogleMapsScraper:
     def __init__(self, query):
         self.query = query
 
-    def scrape_google_maps(self, search_query, max_results=5):
+    def scrape_google_maps(self, search_query, max_results=100):
         chrome_options = Options()
         chrome_options.add_argument("--headless")  # Uncomment for headless mode
         chrome_options.add_argument("--disable-gpu")
