@@ -14,17 +14,22 @@ class GoogleMapsScraper:
         self.query = query
 
     def scrape_google_maps(self, search_query, max_results=100):
-        chrome_options = Options()
-        chrome_options.add_argument("--headless")  # Uncomment for headless mode
+        options = webdriver.ChromeOptions()
+        options.add_argument("--headless")  # Run in headless mode
         options.add_argument("--no-sandbox")
-        chrome_options.add_argument("--disable-gpu")
-        chrome_options.add_argument('--window-size=1920x1080')
+        options.add_argument("--disable-dev-shm-usage")
+        options.add_argument("--disable-gpu")
+        # chrome_options = Options()
+        # chrome_options.add_argument("--headless")  # Uncomment for headless mode
+        # options.add_argument("--no-sandbox")
+        # chrome_options.add_argument("--disable-gpu")
+        # chrome_options.add_argument('--window-size=1920x1080')
         # Increase timeout settings
         caps = DesiredCapabilities().CHROME
         caps["pageLoadStrategy"] = "eager" 
         # Automatically download and use the correct ChromeDriver version
         driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
-        driver = webdriver.Chrome(options=chrome_options)
+        # driver = webdriver.Chrome(options=chrome_options)
         driver.get("https://www.google.com/maps")
 
         try:
