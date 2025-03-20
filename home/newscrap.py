@@ -6,7 +6,9 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 
+from webdriver_manager.chrome import ChromeDriverManager
 class GoogleMapsScraper:
     def __init__(self, query):
         self.query = query
@@ -15,7 +17,10 @@ class GoogleMapsScraper:
         chrome_options = Options()
         chrome_options.add_argument("--headless")  # Uncomment for headless mode
         chrome_options.add_argument("--disable-gpu")
+        chrome_options.add_argument('--window-size=1920x1080')
 
+        # Automatically download and use the correct ChromeDriver version
+        driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
         driver = webdriver.Chrome(options=chrome_options)
         driver.get("https://www.google.com/maps")
 
