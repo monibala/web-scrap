@@ -7,7 +7,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
-
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from webdriver_manager.chrome import ChromeDriverManager
 class GoogleMapsScraper:
     def __init__(self, query):
@@ -16,9 +16,12 @@ class GoogleMapsScraper:
     def scrape_google_maps(self, search_query, max_results=100):
         chrome_options = Options()
         chrome_options.add_argument("--headless")  # Uncomment for headless mode
+        options.add_argument("--no-sandbox")
         chrome_options.add_argument("--disable-gpu")
         chrome_options.add_argument('--window-size=1920x1080')
-
+        # Increase timeout settings
+        caps = DesiredCapabilities().CHROME
+        caps["pageLoadStrategy"] = "eager" 
         # Automatically download and use the correct ChromeDriver version
         driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
         driver = webdriver.Chrome(options=chrome_options)
