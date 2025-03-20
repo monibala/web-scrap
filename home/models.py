@@ -8,6 +8,7 @@ from django.db import models
 
 class ScrapedData(models.Model):
     id = models.IntegerField(blank=True, primary_key=True)
+    session_id = models.CharField(max_length=100,blank=True)
     name = models.CharField(max_length=255)
     website = models.URLField(null=True, blank=True)
     mobile = models.CharField(max_length=20, null=True, blank=True)  # Change to CharField

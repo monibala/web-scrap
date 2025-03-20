@@ -44,8 +44,8 @@
             <li class="nav-link active" >
             <a  href="experiment.html"><i class="fa-solid fa-house"></i>Home</a>
             </li>
-            <hr >
-            <li>
+            <!-- <hr > -->
+            <!-- <li>
                 <a href="Class-Routine.html"><i class="fa-solid fa-search"></i>Search</a>
             </li>
             <hr>
@@ -55,7 +55,7 @@
             <hr>
             <li>
                 <a href="Transport.html"><i class="fa-brands fa-linkedin"></i>Linkedin Extractor</a>
-            </li>
+            </li> -->
             <hr>
             <li>
                 <a href="Account.html"><i class="fa-solid fa-gears"></i>Account</a>
@@ -109,7 +109,7 @@
                     </div>
                 </div>
                 {% if request.user.is_authenticated %}
-    <h3>Welcome {{request.user.username}}</h3>
+    <h3>Welcome {{request.user.username | capfirst }}</h3>
     {% endif %}
             </nav>
             <!-----------------------------------------Navigation End Here --------------------------------------->
@@ -128,7 +128,7 @@
                           <li class="breadcrumb-item active" aria-current="page">Library</li>
                         </ol>
                     </nav> -->
-                    <ul style="background-color: white;" class="p-2 nav nav-pills mb-1" id="pills-tab" role="tablist">
+                    <!-- <ul style="background-color: white;" class="p-2 nav nav-pills mb-1" id="pills-tab" role="tablist">
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Peoples</button>
                         </li>
@@ -138,7 +138,7 @@
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Saved lists</button>
                         </li>
-                    </ul>
+                    </ul> -->
                 
                     <div class="mx-1 tab-content" id="pills-tabContent">
 <!-- ===================================Home-Tab====================================== -->
@@ -153,6 +153,7 @@
                                             <input style="border: none;" class="p-2" type="text" placeholder="Search Companies...">
                                         </div>
                                         <hr class="m-0">
+                                        {% comment %}
                                         <div style="width: 100%; border: none;" class="filters-section">
                                             <h5>Filters</h5>
                                             <div class="accordion" id="filtersAccordion">
@@ -218,12 +219,18 @@
                 
                                             <button type="button" class="btn btn-secondary save-search-btn mt-3" disabled>Save Search</button>
                                         </div>
+                                        {% endcomment %}
                                     </div>
                                 </div>
+                                
                                 <!-- Displays loading message -->
-                                <div id="loading-message" style="display: none;">
-                                    <p>Loading, please wait...</p>
+                                <div id="loading-message" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+                                    <div class="spinner-border text-primary" role="status" style="color: #3498db; border-width: 4px;">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
                                 </div>
+                                
+                                
                                 
                                 <!-- =================Table-Section============== -->
                                 <div class="xyz col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 col-8-xxxl mx-auto my-1 p-2">
@@ -231,20 +238,21 @@
                                         <div class="T-278-edit">
                                             <div class="d-flex justify-content-between align-items-center mb-3">
                                                 <div>
-                                                    <h2 class="total-278" >Total (278.6M)</h2>
+                                                    <h2 class="total-278" >Total</h2>
                                                 </div>
                                                 <div>
-                                                    <button type="button" class="btn btn-primary vp-edit">Download</button>
+                                                    <button id="download-csv" type="button" class="btn btn-primary vp-edit">Download</button>
+                                                    <!-- <button id="download-json" class="button">Download JSON</button> -->
                                                 </div>
                                             </div>
                                             <!-- ============Tabs Header================ -->
                                             <ul class="tab-sec-278 nav nav-tabs mb-3" id="myTab" role="tablist">
                                                 <li class="nav-item" role="presentation">
-                                                    <button class="nav-link active" id="total-tab" data-bs-toggle="tab" data-bs-target="#total" type="button" role="tab" aria-controls="total" aria-selected="true">Total (278.6M)</button>
+                                                    <button class="nav-link active" id="total-tab" data-bs-toggle="tab" data-bs-target="#total" type="button" role="tab" aria-controls="total" aria-selected="true">Total</button>
                                                 </li>
-                                                <li class="nav-item" role="presentation">
+                                                <!-- <li class="nav-item" role="presentation">
                                                     <button class="nav-link" id="netnew-tab" data-bs-toggle="tab" data-bs-target="#netnew" type="button" role="tab" aria-controls="netnew" aria-selected="false">Net New (278.6M)</button>
-                                                </li>
+                                                </li> -->
                                                 <li class="nav-item" role="presentation">
                                                     <button class="nav-link" id="saved-tab" data-bs-toggle="tab" data-bs-target="#saved" type="button" role="tab" aria-controls="saved" aria-selected="false">Saved</button>
                                                 </li>
@@ -282,7 +290,8 @@
                                                                         <form class="mg-b-20 mb-3">
                                                                             <div class="row gutters-8">
                                                                                 <div  class="col-4-xxxl col-xl-4 col-lg-4 col-md-11 mx-auto col-12 form-group">
-                                                                                <button id="save-data" class="btn btn-primary" type="button"><h3>Save</h3></button>
+                                                                                <button id="save-data" class="btn btn-primary" type="button">
+                                                                                    <h3>Save</h3></button>
                                                                             </div>
                                                                                 <!-- <div class="col-4-xxxl col-xl-4 col-lg-4 col-md-11 mx-auto col-12 form-group">
                                                                                     <h3>Export</h3>
@@ -334,6 +343,7 @@
 
 
                                                 <!-- ============Tab-2============ -->
+                                               {% comment %}
                                                 <div class="tab-pane fade" id="netnew" role="tabpanel" aria-labelledby="netnew-tab">
                                                     <!-- Content for Net New tab -->
                                                     <div style="height: 100%; border-bottom: 5px solid rgb(46, 46, 251);" class="video-container mb-3 ">
@@ -382,10 +392,8 @@
                                                                                         <th>Address</th>
                                                                                     </tr>
                                                                                 </thead>
-                                                                                <tbody class="lms-table-body" >
-                                                                                    <tr>
-                                                                                        <td colspan="5"></td>
-                                                                                    </tr>
+                                                                                <tbody>
+                                                                                    
                                                                                 </tbody>
                                                                             </table>
                                                                         </div>
@@ -396,6 +404,7 @@
                                                         <!-- ============================================= -->
                                                         <!-- <div class="filter-note">Add filters to begin your search</div> -->
                                                     </div>
+                                                   
                                                     <h4>Find the right leads</h4>
                                                     <p>Start your search by applying filters to hone in on your ideal customer.</p>
                                                     <div class="d-flex flex-wrap">
@@ -406,6 +415,7 @@
                                                         <button type="button" class="btn btn-outline-secondary m-1">Director</button>
                                                     </div>
                                                 </div>
+                                                {% endcomment %}
                                                 <!-- ============Tab-3============ -->
                                                 <div class="tab-pane fade" id="saved" role="tabpanel" aria-labelledby="saved-tab">
                                                     <!-- Content for Saved tab -->
@@ -451,7 +461,7 @@
                                                                                         <th>Photo</th> -->
                                                                                         <th>Name</th>
                                                                                         <th>Website</th>
-                                                                                        <th>Phone</th>
+                                                                                        <th>Mobile</th>
                                                                                         <th>Address</th>
                                                                                     </tr>
                                                                                 </thead>
@@ -574,9 +584,9 @@
                                        
                                          <div class="T-278-edit">
                                             <div class="d-flex justify-content-between align-items-center mb-3">
-                                                <div>
+                                                <!-- <div>
                                                     <h2 class="total-278" >Total (278.6M)</h2>
-                                                </div>
+                                                </div> -->
                                                 <div>
                                                     <button type="button" class="btn btn-primary vp-edit">View Plans</button>
                                                 </div>
@@ -584,11 +594,11 @@
                                             <!-- ============Tabs Header================ -->
                                             <ul class="tab-sec-278 nav nav-tabs mb-3" id="myTab" role="tablist">
                                                 <li class="nav-item" role="presentation">
-                                                    <button class="nav-link active" id="total-tab" data-bs-toggle="tab" data-bs-target="#total" type="button" role="tab" aria-controls="total" aria-selected="true">Total (278.6M)</button>
+                                                    <button class="nav-link active" id="total-tab" data-bs-toggle="tab" data-bs-target="#total" type="button" role="tab" aria-controls="total" aria-selected="true">Total</button>
                                                 </li>
-                                                <li class="nav-item" role="presentation">
+                                                <!-- <li class="nav-item" role="presentation">
                                                     <button class="nav-link" id="netnew-tab" data-bs-toggle="tab" data-bs-target="#netnew" type="button" role="tab" aria-controls="netnew" aria-selected="false">Net New (278.6M)</button>
-                                                </li>
+                                                </li> -->
                                                 <li class="nav-item" role="presentation">
                                                     <button class="nav-link" id="saved-tab" data-bs-toggle="tab" data-bs-target="#saved" type="button" role="tab" aria-controls="saved" aria-selected="false">Saved</button>
                                                 </li>
@@ -1666,7 +1676,7 @@
                                         <div class="T-278-edit">
                                             <div class="d-flex justify-content-between align-items-center mb-3">
                                                 <div>
-                                                    <h2 class="total-278" >Total (278.6M)</h2>
+                                                    <h2 class="total-278" >Total</h2>
                                                 </div>
                                                 <div>
                                                     <button type="button" class="btn btn-primary vp-edit">View Plans</button>
@@ -1675,10 +1685,10 @@
                                             <!-- ============Tabs Header================ -->
                                             <ul class="tab-sec-278 nav nav-tabs mb-3" id="myTab" role="tablist">
                                                 <li class="nav-item" role="presentation">
-                                                    <button class="nav-link active" id="total-tab" data-bs-toggle="tab" data-bs-target="#total" type="button" role="tab" aria-controls="total" aria-selected="true">Total (278.6M)</button>
+                                                    <button class="nav-link active" id="total-tab" data-bs-toggle="tab" data-bs-target="#total" type="button" role="tab" aria-controls="total" aria-selected="true">Total</button>
                                                 </li>
                                                 <li class="nav-item" role="presentation">
-                                                    <button class="nav-link" id="netnew-tab" data-bs-toggle="tab" data-bs-target="#netnew" type="button" role="tab" aria-controls="netnew" aria-selected="false">Net New (278.6M)</button>
+                                                    <button class="nav-link" id="netnew-tab" data-bs-toggle="tab" data-bs-target="#netnew" type="button" role="tab" aria-controls="netnew" aria-selected="false">Net New</button>
                                                 </li>
                                                 <li class="nav-item" role="presentation">
                                                     <button class="nav-link" id="saved-tab" data-bs-toggle="tab" data-bs-target="#saved" type="button" role="tab" aria-controls="saved" aria-selected="false">Saved</button>
@@ -2714,129 +2724,113 @@
     <!-- TO display data progressively as the scrapper runs-  --> 
     <script>
         $(document).ready(function () {
-            // Handle form submission
-            $("#scraper-form").submit(function (e) {
-                e.preventDefault();
-        
-                const query = $("#query").val();
-                if (!query.trim()) {
-                    alert("Please enter a valid query.");
-                    return;
+        // Handle form submission to start scraping
+        $("#scraper-form").submit(function (e) {
+            e.preventDefault();
+            
+            const query = $("#query").val().trim();
+            if (!query) {
+                alert("Please enter a valid query.");
+                return;
+            }
+            // Clear saved tab and show loader
+            const savedTableBody = $("#saved-data-table tbody");
+            savedTableBody.empty();
+            // Disable the form while scraping is in progress
+            $("#loading-message").show();
+            $("#query").prop("disabled", true);
+            $("button[type='submit']").prop("disabled", true);
+    
+            // Start scraping via POST request
+            $.ajax({
+                url: "{% url 'g_scraper' %}",
+                method: "POST",
+                data: {
+                    query: query,
+                    csrfmiddlewaretoken: "{{ csrf_token }}"
+                },
+                success: function (response) {
+                    console.log(response);
+                    pollScrapedData();  // Start polling to get scraped data
+                },
+                error: function () {
+                    alert("Error starting the scraping process.");
+                    $("#loading-message").fadeOut();
                 }
-                $("#loading-message").fadeIn();
-                
-                $("#query").prop("disabled", true);
-                $("#save-data").prop("disabled", true); 
-                
-                $.ajax({
-                    url: "{% url 'g_scraper' %}",
-                    method: "POST",
-                    data: {
-                        query: query,
-                        csrfmiddlewaretoken: "{{ csrf_token }}"
-                    },
-                    success: function (response) {
-                        
-                        pollScrapedData();
-                    },
-                    error: function (xhr, status, error) {
-        if (xhr.status === 403) {
-            window.location.href = "/login?next=/g_scraper/";
-        } else {
-            alert("An error occurred: " + xhr.responseJSON.error);
-        }
-        $("loading-message").fadeOut();
-    }
-                });
             });
-        
-            // Poll for scraped data and update the table progressively
-            function pollScrapedData() {
-                const tableBody = $("#scraped-data-table tbody");
-        
-                // Poll the server every 2 seconds for new data
-                function showLoading(isLoading) {
-            if (isLoading) {
-                $("#loading-spinner").show();  // Show loading spinner
-            } else {
-                $("#loading-spinner").hide(); // Hide loading spinner
-            }
-        }
-                let intervalId = setInterval(function () {
-                    $.ajax({
-                        url: "{% url 'get_scraper_progress' %}", // Assuming you have a separate endpoint for progress
-                        method: "GET",
-                        success: function (response) {
-                            showLoading(true);
-                            if (response.data && response.data.length > 0) {
-                                console.log("Received Data :" , response.data);
-                                displayScrapedData(response.data);
-        
-                                // Enable the Save button once data is available
-                                $("#save-data").prop("disabled", false);
-                            }
-        
-                            // If no more data, stop polling
-                            if (response.done) {
-                                clearInterval(intervalId);
-                                $("#loading-message").fadeOut();
-                                $("#query").prop("disabled", false); // Enable input again
-                            }
-                        },
-                        error: function () {
-                            alert("Error fetching scraped data.");
+        });
+    
+        // Poll the backend for scraped data every 3 seconds
+        function pollScrapedData() {
+            const tableBody = $("#scraped-data-table tbody");
+            setInterval(() => {
+        fetch("{% url 'get_scraped_data' %}")
+            .then((response) => response.json())
+            .then((data) => {
+                console.log("Received data:", data); // Debugging log
+                if (data.data && data.data.length > 0) {
+                    displayScrapedData(data.data); // Your function to render data in the template
+                }
+            })
+            .catch((error) => console.error("Error fetching scraped data:", error));
+    }, 3000); // Poll every 3 seconds
+    // Save data
+    
+            let intervalId = setInterval(function () {
+                $.ajax({
+                    url: "{% url 'get_scraped_data' %}",
+                    method: "GET",
+                    success: function (response) {
+                        if (response.data && response.data.length > 0) {
+                            // Display the latest scraped data progressively
+                            displayScrapedData(response.data);
                         }
-                    });
-                }, 2000); // Poll every 2 seconds
-            }
-        
-            // Display scraped data in the table progressively
-            // function displayScrapedData(data) {
-            //     const tableBody = $("#scraped-data-table tbody");
-            //     console.log("Display : ", data);
-            //     data.forEach(function (business) {
-            //         const row = `<tr>
-            //             <td>${business.name || 'N/A'}</td>
-            //             <td>${business.address || ''}</td> 
-            //             <td>${business.mobile || ''}</td>
-            //             <td>${business.website || ''}</td>
-            //         </tr>`;
-            //         tableBody.append(row);
-            //     });
-            // }
-            function displayScrapedData(data) {
-    const tableBody = $("#scraped-data-table tbody");
     
-
+                        // If no new data, stop polling
+                        if (response.data.length === 0) {
+                            clearInterval(intervalId);
+                            $("#loading-message").fadeOut();
+                            $("#query").prop("disabled", false);
+                            $("button[type='submit']").prop("disabled", false);
+                        }
+                    },
+                    error: function () {
+                        clearInterval(intervalId);  // Stop polling in case of error
+                        alert("Error fetching scraped data.");
+                    }
+                });
+            }, 3000);  // Poll every 3 seconds
+        }
     
-    data.forEach(function (business) {
-        const website = business.websites && business.websites.length > 0 
-                        ? business.websites.join(", ") 
-                        : "N/A";
-        const mobile = business.mobiles && business.mobiles.length > 0 
-                        ? business.mobiles.join(", ") 
-                        : "N/A";
-        const address = business.addresses && business.addresses.length > 0 
-                        ? business.addresses.join(", ") 
-                        : "N/A";
-
-        const row = `<tr>
-            <td>${business.name || 'N/A'}</td>
-            <td>${website}</td>
-            <td>${mobile}</td>
-            <td>${address}</td>
-            
-            
-        </tr>`;
-        
-        // Append the row to the table body
-        tableBody.append(row);
-    });
-}
-
-
-            
-        $("#save-data").off("click").on("click",function () {
+        // Function to display scraped data in the table progressively
+        function displayScrapedData(data) {
+            const tableBody = $("#scraped-data-table tbody");
+    
+            data.forEach(function (business) {
+                const website = business.websites && business.websites.length > 0 
+                                ? business.websites.join(", ") 
+                                : "N/A";
+                const mobile = business.mobiles && business.mobiles.length > 0 
+                                ? business.mobiles.join(", ") 
+                                : "N/A";
+                const address = business.addresses && business.addresses.length > 0 
+                                ? business.addresses.join(", ") 
+                                : "N/A";
+    
+                const row = `<tr>
+                    <td>${business.name || 'N/A'}</td>
+                    <td>${website}</td>
+                    <td>${mobile}</td>
+                    <td>${address}</td>
+                </tr>`;
+    
+                // Append the row to the table body
+                tableBody.append(row);
+            });
+        }
+     
+            // Save scraped data to the database
+            $("#save-data").click(function () {
             const tableRows = $("#scraped-data-table tbody tr");
             if (tableRows.length === 0) {
                 alert("No data to save.");
@@ -2912,12 +2906,49 @@
         }
     });
 });
+// To display saved data in saved tab
+// $("#saved-tab").click(async function () {
+//     // Show the saved tab content and hide other tabs (optional)
+//     // $("#saved-tab").show();
+//     // $("#scraped-data-tab").hide(); // Assuming you have other tabs
 
+//     const tableBody = $("#saved-data-table tbody");
+//     tableBody.empty(); // Clear the table to avoid duplicate entries
+
+//     try {
+//         const response = await fetch("{% url 'get_saved_data' %}");
+//         if (!response.ok) {
+//             throw new Error("Failed to fetch saved data.");
+//         }
+
+//         const result = await response.json();
+//         if (result.data.length === 0) {
+//             // tableBody.append("<tr><td colspan='5'>No saved data available.</td></tr>");
+//             // return;
+//             const emptyRow = `<tr><td colspan="4">No saved data available.</td></tr>`;
+//             tableBody.append(emptyRow);
+//         }
+
+//         result.data.forEach((entry) => {
+//             const row = `<tr>
+//                 <td>${entry.name || "N/A"}</td>
+//                 <td>${entry.website || "N/A"}</td>
+//                 <td>${entry.mobile || "N/A"}</td>
+//                 <td>${entry.address || "N/A"}</td>
+//                 <td>${entry.query || "N/A"}</td>
+//             </tr>`;
+//             tableBody.append(row);
+//         });
+//     } catch (error) {
+//         console.error("Error fetching saved data:", error);
+//         alert("Unable to load saved data.");
+//     }
+// });
+// Ends saved tab
 // To display loading message
 $("#start-scraping-button").click(function () {
     // Show the "Loading" message when scraping starts
     $("#loading-message").show();
-    console.log("Loading message displayed")
     $("#completed-message").hide();  // Hide the "Completed" message if it's already visible
 
     $.ajax({
@@ -2929,17 +2960,17 @@ $("#start-scraping-button").click(function () {
             $("#completed-message").show();
 
             // Optionally, you can now display the scraped data in a table or anywhere on the page
-            // const tableBody = $("#saved-data-table tbody");
-            // tableBody.empty();  // Clear any existing rows
-            // response.data.forEach(function (business) {
-            //     const row = `<tr>
-            //         <td>${business.name || 'N/A'}</td>
-            //         <td>${business.website || 'N/A'}</td>
-            //         <td>${business.mobile || 'N/A'}</td>
-            //         <td>${business.address || 'N/A'}</td>
-            //     </tr>`;
-            //     tableBody.append(row);
-            // });
+            const tableBody = $("#saved-data-table tbody");
+            tableBody.empty();  // Clear any existing rows
+            response.data.forEach(function (business) {
+                const row = `<tr>
+                    <td>${business.name || 'N/A'}</td>
+                    <td>${business.website || 'N/A'}</td>
+                    <td>${business.mobile || 'N/A'}</td>
+                    <td>${business.address || 'N/A'}</td>
+                </tr>`;
+                tableBody.append(row);
+            });
         },
         error: function () {
             alert("Error fetching data.");
@@ -2947,11 +2978,30 @@ $("#start-scraping-button").click(function () {
         }
     });
 });
-
+   
+    // Call fetchSavedData when the "Saved" tab is clicked
+    // $("#saved-tab-button").click(fetchSavedData);
+    
+        // Trigger download of CSV when the button is clicked
+        $("#download-csv").click(function () {
+            window.location.href = "{% url 'download_csv' %}";  // Trigger download CSV
+            setTimeout(function () {
+            // $("#loader").hide(); // Hide loader
+            $("#saved-data-table tbody").empty(); // Clear the table
+            // alert("Data has been downloaded and cleared from the Saved tab.");
+        }, 1000);
+            
+        });
+    
+        // Trigger download of JSON when the button is clicked
+        $("#download-json").click(function () {
+            window.location.href = "{% url 'download_json' %}";  // Trigger download JSON
+        });
     });
-
-        
-        </script>
+    
+       </script>
       
+    
+    
 </body>
 </html>

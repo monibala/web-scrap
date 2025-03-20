@@ -1,13 +1,15 @@
 import csv
+import json
 import time
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 
 from home.forms import UserRegistrationForm
-from home.scraper import GoogleMapsScraper,scraped_data_store
+from home.newscrap import GoogleMapsScraper
 from django.contrib.auth.decorators import login_required
 from .models import ScrapedData
 
+scraped_data = []
 
 # # Create your views here.
 def home(request):
@@ -33,145 +35,29 @@ def user_logout(request):
 # from django.contrib.sessions.models import Session
 from django.contrib import messages
 
-# def g_scraper(request):
-#     print("Calls Gscrper")
-#     if request.method == "GET":
-#         query = request.GET.get("q", "").strip()
-        
-#         if query:
-#             try:
-#                 # Scraping logic
-#                 scraped_data = []
-#                 for partial_data in scrape_google_maps(query, yield_partial=True):
-#                     scraped_data.append(partial_data)
-#                     # Store the latest data in the session
-#                     request.session['scraped_data'] = scraped_data
-#                     request.session['query'] = query
-#                     time.sleep(1)  
-#                     for partial_data in scrape_google_maps(query, yield_partial=True):
-                        
-#                         scraped_data = request.session.get('scraped_data', [])
-#                         scraped_data.append(partial_data)
-#                         request.session['scraped_data'] = scraped_data
-                    
-#                     if request.is_ajax():
-#                         print("Sending data:", scraped_data)
-#                         return JsonResponse({'data': scraped_data})
 
-#                 messages.success(request, "Data extracted successfully.")
-#             except Exception as e:
-#                 messages.error(request, f"An error occurred: {e}")
-#         else:
-#             messages.error(request, "Please provide a valid query.")
-#         has_scraped_data = 'scraped_data' in request.session
-#         scraped_data = request.session.get('scraped_data', [])
-#         print("SCRAPED DATA :::::",scraped_data)
-#         query = request.session.get('query', '')
-
-        
-#         if not has_scraped_data:  
-#             request.session['scraped_data'] = []
-#             request.session['query'] = ''
-    
-#     return render(
-#         request, 
-#         "experiment.html", 
-#         {
-#             "has_scraped_data": has_scraped_data, 
-#             # "scraped_data": request.session.get('scraped_data', []),
-#             "scraped_data" : scraped_data,
-#             "query": request.session.get('query', ''),
-            
-#         }
-#     )
 from django.shortcuts import redirect, render
 
-# def save_data(request):
-#     try:
-#         scraped_data = request.session.get('scraped_data', [])
-#         query = request.session.get('query', '')
-
-#         if scraped_data:
-#             for data in scraped_data:
-#                 name = data['name']
-#                 # Zip only when addresses, mobiles, and websites exist and are the same length
-#                 max_length = max(len(data['addresses']), len(data['mobiles']), len(data['websites']))
-#                 for i in range(max_length):
-#                     address = data['addresses'][i] if i < len(data['addresses']) else "NA"
-#                     mobile = data['mobiles'][i] if i < len(data['mobiles']) else None
-#                     website = data['websites'][i] if i < len(data['websites']) else None
-
-                    
-#                     ScrapedData.objects.create(
-#                         name=name or "Unknown",
-#                         address=address,
-#                         mobile=mobile,
-#                         website=website,
-#                         query=query,
-#                     )
-#             request.session['scraped_data'] = []
-#             messages.success(request, "Data saved successfully.")
-
-#         return redirect("view_saved_data", query=query)
-
-#     except Exception as e:
-#         messages.error(request, f"Error saving data: {e}")
-#         return redirect("g_scraper")
-# def view_saved_data(request, query):
-#     businesses = ScrapedData.objects.filter(query=query)
-#     return render(request, "experiment.html", {"businesses": businesses, "query": query})
-# # Clears session data
-# def reset_scraping(request):
-    
-#     request.session['scraped_data'] = []
-#     return redirect('g_scraper')  
-# # Download scraped data
-# def download_data(request):
-#     scraped_data = request.session.get('scraped_data', [])
-#     query = request.session.get('query','default query')
-#     is_scraped_data = scraped_data.request.session()
-#     response = HttpResponse(content_type='text/csv')
-#     filename = f"{query.replace(' ', '_').replace('/', '_')}_scraped_data.csv"
-#     response['Content-Disposition'] = f'attachment; filename = "filename"'
-#     writer = csv.writer(response)
-#     writer.writerow(['Business Name', 'Address', 'Mobile', "Website"])
-#     for data in scraped_data:
-#         name = data.get('name', 'Unknown')
-#         address = ", ".join(data.get('addresses', ['NA']))
-#         mobile = ", ".join(data.get('mobiles', ['NA']))
-#         website = ", ".join(data.get('websites', ['NA']))
+# Download scraped data
+def download_data(request):
+    scraped_data = request.session.get('scraped_data', [])
+    query = request.session.get('query','default query')
+    is_scraped_data = scraped_data.request.session()
+    response = HttpResponse(content_type='text/csv')
+    filename = f"{query.replace(' ', '_').replace('/', '_')}_scraped_data.csv"
+    response['Content-Disposition'] = f'attachment; filename = "filename"'
+    writer = csv.writer(response)
+    writer.writerow(['Business Name', 'Address', 'Mobile', "Website"])
+    for data in scraped_data:
+        name = data.get('name', 'Unknown')
+        address = ", ".join(data.get('addresses', ['NA']))
+        mobile = ", ".join(data.get('mobiles', ['NA']))
+        website = ", ".join(data.get('websites', ['NA']))
 
         
-#         writer.writerow([name, address, mobile, website])
-#     return response  
+        writer.writerow([name, address, mobile, website])
+    return response  
 
-# def g_scraper(request):
-#     if request.method == "POST":
-#         query = request.POST.get("query", "").strip()
-#         if not query:
-#             return JsonResponse({"error": "Query is required."}, status=400)
-
-#         try:
-#             # Initialize the scraper here (for example, call your scraping function)
-#             scraper = GoogleMapsScraper(query)  # Placeholder for your actual scraper class
-#             scraped_data = []
-            
-#             for partial_data in scraper.scrape_progressively():  # Assume `scrape_progressively` yields data
-#                 scraped_data.append(partial_data)
-                
-#                 # After scraping a piece of data, send it progressively
-#                 time.sleep(1)  # Simulate delay between scraping steps
-
-#                 # Send partial data back to the frontend (AJAX)
-#                 # if request.is_ajax():
-#                 return JsonResponse({'data': partial_data})
-
-#             return JsonResponse({"message": "Scraping completed successfully.", "data": scraped_data}, status=200)
-
-#         except Exception as e:
-#             return JsonResponse({"error": f"An error occurred: {str(e)}"}, status=500)
-
-#     return JsonResponse({"error": "Invalid request method."}, status=405)
 def ajax_login_required(view_func):
     def wrapper(request, *args, **kwargs):
         is_ajax = request.headers.get('x-requested-with') == 'XMLHttpRequest'
@@ -184,67 +70,160 @@ def ajax_login_required(view_func):
         return view_func(request, *args, **kwargs)
     return wrapper
 
-@ajax_login_required
-def g_scraper(request):
+# @ajax_login_required
+# def g_scraper(request):
     
-    if request.method == "POST":
-        query = request.POST.get("query", "").strip()
-        print(f"Query received: {query}")  # Debugging log
+#     if request.method == "POST":
+#         query = request.POST.get("query", "").strip()
+#         print(f"Query received: {query}")  # Debugging log
 
-        if not query:
-            return JsonResponse({"error": "Query is required."}, status=400)
-        try:
-            scraper = GoogleMapsScraper(query)
-            scraped_data = []
+#         if not query:
+#             return JsonResponse({"error": "Query is required."}, status=400)
+#         try:
+#             scraper = GoogleMapsScraper(query)
+#             scraped_data = []
             
-            for partial_data in scraper.scrape_progressively():  # Assume `scrape_progressively` yields data
-                scraped_data.append(partial_data)
+            # for partial_data in scraper.scrape_progressively():  # Assume `scrape_progressively` yields data
+            #     scraped_data.append(partial_data)
                 
                 
-                time.sleep(1)  
-                return JsonResponse({'data': partial_data})
+#                 time.sleep(1)  
+#                 return JsonResponse({'data': partial_data})
 
-            return JsonResponse({"message": "Scraping completed successfully.", "data": scraped_data}, status=200)
+#             return JsonResponse({"message": "Scraping completed successfully.", "data": scraped_data}, status=200)
 
-        except Exception as e:
-            return JsonResponse({"error": f"An error occurred: {str(e)}"}, status=500)
+#         except Exception as e:
+#             return JsonResponse({"error": f"An error occurred: {str(e)}"}, status=500)
 
-    return JsonResponse({"error": "Invalid request method."}, status=405)
+#     return JsonResponse({"error": "Invalid request method."}, status=405)
+# Immediate data display
+# from threading import Thread
+# def g_scraper(request):
+#     query = request.POST.get("query", "").strip()
+#     # max_results = int(request.GET.get("max_results", 10))
 
+#     def scrape():
+#         global scraped_data  # Explicitly declare scraped_data as global
+#         scraper = GoogleMapsScraper(query)
+#         for business in scraper.scrape_google_maps(query):
+#             scraped_data.append(business)  # Add to global data store
+#             time.sleep(1)  # Simulate delay
 
-def start_scraper(request):
-    query = request.GET.get("q", "").strip()
-    if not query:
-        return JsonResponse({"error": "No query provided."}, status=400)
+#     # Start scraping in a separate thread
+#     thread = Thread(target=scrape)
+#     thread.start()
+#     return JsonResponse({"message": "Scraping completed successfully.", "data": scraped_data}, status=200)
+#     # return JsonResponse({"status": "Scraping started"})
+# def fetch_data(request):
+#     global scraped_data
+#     return JsonResponse(scraped_data, safe=False)
 
-    global scraper_results
-    scraper_results = []
+# def start_scraper(request):
+#     query = request.GET.get("q", "").strip()
+#     if not query:
+#         return JsonResponse({"error": "No query provided."}, status=400)
+
+#     global scraper_results
+#     scraper_results = []
+
+#     def scrape():
+#         global scraper_results
+#         for data in scrape_google_maps(query):
+#             scraper_results.append(data)
+
+#     threading.Thread(target=scrape).start()
+#     return JsonResponse({"message": "Scraping started."})
+
+# last_index = 0
+# def get_scraper_progress(request):
+#     global last_index
+
+#     if request.method == "GET":
+#         new_data = []
+        
+#         print("Progressiv edata")
+#         if last_index < len(scraped_data_store):
+#             new_data = [scraped_data_store[last_index]]
+#             print(new_data)
+#             last_index += 1
+
+#         # Check if scraping is done
+#         done = last_index >= len(scraped_data_store)
+
+#         return JsonResponse({"data": new_data, "done": done})
+# New
+# from django.shortcuts import render
+# from django.http import StreamingHttpResponse
+# from home.newscrap import GoogleMapsScraper
+
+# def g_scraper(request):
+#     # Render template when it's a GET request
+#     if request.method == 'GET':
+#         return render(request, 'index.html')  # Render the template as usual
+
+#     # Handle POST request to start scraping and return streaming data
+#     if request.method == 'POST':
+#         query = request.POST.get('query')
+#         if query:
+#             scraper = GoogleMapsScraper(query)
+#             # Return StreamingHttpResponse for progressive scraping
+#             return StreamingHttpResponse(scraper.scrape_google_maps(query), content_type="application/json")
+    
+#     return render(request, 'index.html')  # Fallback if something goes wrong
+
+import time
+from threading import Thread
+from queue import Queue
+from django.http import JsonResponse
+from django.shortcuts import render
+from .newscrap import GoogleMapsScraper
+
+# Global queue to store scraped data safely
+import time
+from queue import Queue
+from threading import Thread
+from django.http import JsonResponse
+
+scraped_queue = Queue()
+scraping_in_progress = False  # Flag to track if scraping is in progress
+
+def g_scraper(request):
+    global scraping_in_progress
+    query = request.POST.get("query", "").strip()
+
+    if scraping_in_progress:
+        return JsonResponse({"message": "Scraping is already in progress."}, status=400)
+
+    scraping_in_progress = True
 
     def scrape():
-        global scraper_results
-        for data in scrape_google_maps(query):
-            scraper_results.append(data)
+        scraper = GoogleMapsScraper(query)
+        for business in scraper.scrape_google_maps(query):
+            scraped_queue.put(business)  # Add data to the queue
+            time.sleep(1)  # Simulate delay (can be removed for real scraping)
 
-    threading.Thread(target=scrape).start()
-    return JsonResponse({"message": "Scraping started."})
+        global scraping_in_progress
+        scraping_in_progress = False  # Set flag to False when scraping is complete
 
-last_index = 0
-def get_scraper_progress(request):
-    global last_index
+    # Start scraping in a background thread
+    thread = Thread(target=scrape)
+    thread.daemon = True  # Ensure thread exits when main program exits
+    thread.start()
 
-    if request.method == "GET":
-        new_data = []
-        
-        print("Progressiv edata")
-        if last_index < len(scraped_data_store):
-            new_data = [scraped_data_store[last_index]]
-            print(new_data)
-            last_index += 1
+    return JsonResponse({"message": "Scraping started, data will be available soon."}, status=200)
 
-        # Check if scraping is done
-        done = last_index >= len(scraped_data_store)
+def get_scraped_data(request):
+    scraped_data = []
 
-        return JsonResponse({"data": new_data, "done": done})
+    while not scraped_queue.empty():
+        item = scraped_queue.get()
+        print(f"Retrieved from queue: {item}")
+        scraped_data.append(item)
+
+    return JsonResponse({"data": scraped_data}, status=200)
+
+
+
 # To test
 # def test_scraper(request):
 #     scraper = GoogleMapsScraper("pet shops in Chennai")
@@ -252,56 +231,79 @@ def get_scraper_progress(request):
 #     print(data)  # Debugging log
 #     return JsonResponse({"data": data})
 # To save data in db 
-def save_scraped_data(request):
-    if request.method=="POST":
-        try:
-            data = request.POST.get("data","")
-            if not data:
-                return JsonResponse({"error" : "No data"})
-            import json
-            data_list = json.loads(data)
-            
-            for d in data_list:
-                print(f"Saving data: {d}")
-                ScrapedData.objects.create(
-                name=d.get("name", ""),
-                website=d.get("website", ""),
-                mobile=d.get("mobile", ""),
-                address=d.get("address", ""),
-                query=d.get("query", ""),
-                
-                
-                
-            )
 
-            return JsonResponse({"messge":"DataSaved"})
-        except Exception as e:
-            return JsonResponse({"error":f"An error occurred: {str(e)}"}, status=500)
-    return JsonResponse({"error": "Invalid Request"})
-# To retrieve save data
+from .models import ScrapedData
+
+# def save_scraped_data(request):
+#     if request.method == "POST":
+#         # Ensure session key exists
+#         if not request.session.session_key:
+#             request.session.save()
+
+#         session_id = request.session.session_key  # Fetch session key
+#         data = request.POST.get('data')
+
+#         if not data:
+#             return JsonResponse({"error": "No data provided"}, status=400)
+
+#         try:
+#             scraped_data = json.loads(data)  # Parse JSON data
+#             for entry in scraped_data:
+#                 ScrapedData.objects.create(
+#                     session_id=session_id,
+#                     name=entry.get('name', ''),
+#                     website=entry.get('website', ''),
+#                     mobile=entry.get('mobile', ''),
+#                     address=entry.get('address', ''),
+#                     query = entry.get('query', '')
+#                 )
+#             return JsonResponse({"message": "Data saved successfully"})
+#         except Exception as e:
+#             return JsonResponse({"error": str(e)}, status=400)
+def save_scraped_data(request):
+    if request.method == "POST":
+        
+        data = json.loads(request.POST.get("data", "[]"))
+        session_id = request.session.session_key
+        saved_entries = []
+
+        for entry in data:
+            # Check if an entry with the same session_id, name, and query exists
+            if not ScrapedData.objects.filter(
+                session_id=session_id,
+                name=entry['name'],
+                query=entry['query']
+            ).exists():
+                # Save the entry if it doesn't already exist
+                saved = ScrapedData.objects.create(
+                    name=entry['name'],
+                    website=entry['website'],
+                    mobile=entry['mobile'],
+                    address=entry['address'],
+                    query=entry['query'],
+                    session_id=session_id
+                )
+                saved_entries.append(saved)
+
+        return JsonResponse({"message": "Data saved successfully.", "saved_count": len(saved_entries)})
+    return JsonResponse({"error": "Invalid request method."}, status=400)
 def get_saved_data(request):
     if request.method == "GET":
-        saved_data = list(ScrapedData.objects.values())
-        return JsonResponse({"data":saved_data},safe=False)
-    
+        if not request.session.session_key:
+            request.session.save()
+
+        session_id = request.session.session_key  # Fetch session key
+        saved_data = list(ScrapedData.objects.filter(session_id=session_id).values())
+
+        return JsonResponse({"data": saved_data})
+   
 # User Creation
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import user_passes_test
 
 
-# @user_passes_test(lambda u: u.is_staff)
-# def create_user_view(request):
-#     if request.method == 'POST':
-#         form = UserRegistrationForm(request.POST)
-#         if form.is_valid():
-#             form.save()  # Save the user to the database
-#             return redirect('home')  # Redirect to home after successful creation
-#     else:
-#         form = UserRegistrationForm()
-
-#     return render(request, 'add_user.html', {'form': form})
 from django.contrib.auth.hashers import make_password
-from django.http import JsonResponse
+
 from .models import CustomUser
 import uuid
 
@@ -328,3 +330,46 @@ def create_user_view(request):
             return JsonResponse({'error': str(e)}, status=400)
 
     return render(request, 'add_user.html') 
+
+def download_csv(request):
+    if not request.session.session_key:
+        request.session.save()
+
+    session_id = request.session.session_key  # Fetch session key
+    scraped_data = ScrapedData.objects.filter(session_id=session_id)
+
+    # Prepare response with content type 'text/csv'
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="scraped_data.csv"'
+
+    # Create CSV writer object
+    writer = csv.writer(response)
+    writer.writerow(['Name', 'Website', 'Mobile', 'Address'])  # Header row
+
+    # Write data rows
+    for data in scraped_data:
+        writer.writerow([data.name, data.website, data.mobile, data.address])
+
+    return response
+def download_json(request):
+    if not request.session.session_key:
+        request.session.save()
+
+    session_id = request.session.session_key  # Fetch session key
+    scraped_data = ScrapedData.objects.filter(session_id=session_id)
+
+    data_to_download = [{
+        'name': data.name,
+        'website': data.website,
+        'mobile': data.mobile,
+        'address': data.address
+    } for data in scraped_data]
+
+    # Create JSON response with the data
+    response = HttpResponse(
+        json.dumps(data_to_download),
+        content_type='application/json'
+    )
+    response['Content-Disposition'] = 'attachment; filename="scraped_data.json"'
+
+    return response

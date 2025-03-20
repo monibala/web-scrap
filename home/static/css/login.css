@@ -14,14 +14,14 @@ body {
   justify-content: center;
   height: 100vh;
   padding: 15px;
-  background: #1abc9c;
+  /* background: #1abc9c; */
   overflow: hidden;
 }
 
 .wrapper {
   max-width: 500px;
   width: 100%;
-  background: #fff;
+  background: #5b5bcd;
   border-radius: 5px;
   box-shadow: 0px 4px 10px 1px rgba(0, 0, 0, 0.1);
 }
